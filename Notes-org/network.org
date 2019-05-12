@@ -1,0 +1,31 @@
+* 网络的基本概念
+** 以太网络的传输协议：CSMA/CD
+** MAC 的封装格式
+** TCP/IP 的网络层相关数据包与数据
+*** 观察主机路由：route
+**** route
+     - show / manipulate the IP routing table
+***** usage
+****** -n
+       将主机名以 ip 的方式显示
+*** IP 与 MAC：网络接口层的 ARP 与 RARP 协议
+**** ARP
+     - Address Resolution Protocol, 网络地址解析协议
+**** RARP
+     - Revers ARP, 反向网络地址解析协议
+**** ifconfig
+     - configure a network interface
+**** arp
+     - manipulate the system ARP cache
+***** usage
+****** -n
+       将主机名以 ip 的方式显示
+****** -d hostname
+       将 hostname 的 hardware_address 由 ARP table 当中删除掉
+****** -s hostname(IP) Hardware_address
+       设定某个 IP 或 hostname 的 MAC 到 ARP table 当中
+**** ARP table 是动态的信息（一般保留２０分钟）
+*** ICMP 协议
+**** ICMP
+     - Internet Control Message Protocol, 即因特网信息控制协议
+**** ping 与 traceroute 指令可以通过 ICMP 数据包的辅助来确认与回报网络主机的状态

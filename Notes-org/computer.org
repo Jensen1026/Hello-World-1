@@ -1,0 +1,105 @@
+* Computer(台式机）
+
+** Basic System
+
+*** Gentoo
+*** stub kernel
+
+** Desktop Envirnoment
+
+*** stumpwm
+*** dwm
+
+**** slock
+**** xss-lock
+**** dmenu
+**** xsetroot
+
+** Drivers
+
+*** xf86-input-libinput
+
+** Applications
+
+*** Gimp
+*** Krita
+*** LMMS
+*** mpv Media Player (deepin用自带的深度影院即可)
+*** typora
+
+** Pdf Reader
+
+   - Emacs DocView-mode(需要安装 ghostscript-gpl, app-text/ghostscript-gpl, unoconv for MS office docs)
+    
+** Terminal
+
+*** simple terminal
+*** zsh+oh-my-zsh
+*** tmux
+*** Vim
+*** Emacs
+*** fzf
+*** screenfetch
+*** tree
+
+** Fonts
+
+*** nerd-fonts(for vim and ranger)
+*** source-code-pro(for Emacs, Gvim, dwm and st)
+
+
+* Laptop
+
+** deepin
+   
+*** 显卡驱动
+
+    sudo apt-get install nvidia-driver
+
+    使用英伟达闭源驱动
+
+*** 网易有道词典
+
+*** Thunderbird 插件
+
+**** Lightning
+
+
+
+*** Deluge
+
+*** 深度终端
+    
+    sudo apt-get install lrzsz 安装 rz 和 sz 命令
+
+
+*** 绘图工具
+**** XMind
+**** Dia
+
+* Server
+
+** Server OS
+*** centos
+*** gentoo
+
+** Applications
+*** FileZilla
+
+* Development Envirnoment
+
+** Lisp
+
+*** sbcl
+
+** C
+
+*** gcc
+*** gdb 
+*** clang
+
+** golang
+
+*** how to install
+
+    sudo apt-get install golang

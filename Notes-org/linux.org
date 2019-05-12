@@ -1,0 +1,10 @@
+* FAQ
+** 如何查阅手册页
+*** 常见查询数据后面数字的意义 (详见 man man)
+*** man -f small
+    - 相当于 whatis small
+    - 详见 man man
+*** man -k printf
+    - 相当于 apropos printf
+    - 详见 man man
+

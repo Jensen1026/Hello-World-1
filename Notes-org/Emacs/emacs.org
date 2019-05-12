@@ -1,0 +1,246 @@
+* Emacs
+** Before learning
+*** Important note
+    - C-<chr> means hold the CONTROL key while typing the character <chr>
+    - M-<chr> means hold the META or EDIT or ALT key down while typing <chr>.
+      If there is no META, EDIT or ALT key, instead press and release the ESC key
+      and then type <chr>. we write <ESC> for the ESC key
+    - M-x command 表示同时按下Alt+x,并输入command(要输入的命令),然后按下回车键(Enter)
+    - TO end the Emacs session, type C-x C-c
+    - TO quit a partially entered command, type C-g
+*** Documents in Emacs
+    - M-x help-with-tutorial或<C-h t>查看Emacs tutorial
+      * To stop the tutorial, type C-x k, then <Return> at the prompt 
+    - M-x describe-variable或<C-h v>查看变量的文档
+    - M-x describe-function或<C-h f>查看命令的文档
+    - M-x describe-key或<C-h k>查看快捷键的文档
+*** 在Shell中不加载任何插件打开Emacs:emacs -nw -Q
+** Start learning
+*** Basic commands
+**** The following commands are useful for viewing screenfuls:
+     - C-v Move forward one screenful
+     - M-v Move backward one screenful
+     - C-l Clear screen and redisplay all the text, moving the text around the
+       cursor to the center of the screen.(That's CONTROL-L, not CONTROL-1.)
+       * Find the cursor, and note what text is near it. Then type C-l.
+         Find the cursor again and notice that the same text is still near the
+         cursor, but now it is in the center of the screen. If you press C-l
+         again, this piece of text will move to the top of the screen. Press
+         C-l again, and it moves to the bottom.
+       * You can also use the Pageup and PageDn keys to move by screenfuls, if
+         your terminal has them, but you can edit more efficiently if you use
+         C-v and M-v.
+**** Basic cursor control
+     - C-f Move forward a character
+     - C-b Move backward a character
+     - M-f Move forward a word
+     - M-b Move backward a word
+     - C-n Move to next line
+     - C-p Move to previous line
+     - C-a Move to beginning of line
+     - C-e Move to end of line
+     - M-a Move back to beginning of sentence
+     - M-e Move forward to end of sentence
+     - M-< (META Less-than) Move to the beginning of the whole text
+     - M-> (META Greater-than) Move to the end of the whole text
+**** Prefix argument
+     - Most Emacs commands accept a numeric argument; for most commands, this
+       server as a repeat-count. The way you give a command a repeat count is:
+       * By typing C-u and then the digits before you type the command
+       * If you have a META (or EDIT or ALT) key, type the digits while holding
+         down the META key
+     - Some commands use numeric argument in some other way
+       * Several commands use it as a flag--the presence of a prefix argument,
+         regardless of its value, makes the command do something different
+       * C-v and M-v are another kind of exception. When given an argument, they
+         scroll the text up or down by that many lines, rather than by a screenful
+**** C-g
+     - If Emacs stops responding to your commmands, you can stop it safely by
+       typing C-g
+     - You can also use C-g to discard a numeric argument or the beginning of
+       a command that you do not want to finish
+**** Disabled commands
+     - Some Emacs commands are "disabled" so that beginning users cannot use them
+       by accident. If you type one of the disabled commands, Emacs displays a
+       message saying what the commands was, and asking you whether you want to
+       go ahead and execute the command:
+       * Type <SPC> (the Space bar) to execute the command
+       * type n to cancel
+**** Windows
+     - C-x 1 Delete all but one window (i.e., kill all other windows)
+**** Inserting and deleting
+     - <DEL> (This is the key on the keyboard usually labeled "Backspace") Delete
+       the character just before the cursor
+     - C-d Delete the next character after the cursor
+     - M-<DEL> Kill the word immediately before the cursor
+     - M-d Kill the next word after the cursor
+     - C-k Kill from the cursor position to end of line
+       * Note that a single C-k kills the contents of the line, and a second C-k
+         kills the line itself, and makes all the other lines move up. C-k treats
+         a numeric argument specially: it kills that many lines AND their contents.
+         This is not mere repetition.  
+     - M-k Kill to the end of the current sentence
+     - You can also kill a segment of text with one uniform method. Move to one end
+       of that part, and type C-<SPC>. (<SPC> is the Space bar.) Next, move the
+       cursor to the other end of the text you intend to kill. As you do this, Emacs
+       highlights the text between the cursor and the position where you typed
+       C-<SPC>. Finally, type C-w. This kills all the text between the two positions.
+     - C-w Kill
+     - M-w Copy
+     - C-y Yank
+     - M-y After you have done C-y to get the most recent kill, typing M-y replaces
+       that yanked text with the previous kill
+**** Undo
+     - C-/ Undoes changes
+       * Normally, C-/ undoes the changes made by one command; if you repeat C-/
+         several times in a row, each repetition undoes one more command
+       * But there are two exceptions: commands that do not change the text don't
+         count (this includes cursor motion commands and scrolling commands), and
+         self-inserting characters are usually handled in groups of up to 20
+       * C-_ is an alternative undo commands; it works exactly the same as C-/.
+         On some text terminals, typing C-/ actually sends C-_ to Emacs
+       * C-x u also works exactly like C-/
+       * A numeric argument to C-/, C-_, or C-x u acts as a repeat count
+**** Files
+     - C-x C-f Find a file
+     - C-x C-s Save the file
+       * Create new file: Create a file named "foo" by typing C-x C-f foo <Return> 
+**** Buffers
+     - C-x C-b List buffers
+       * The buffer list you make with C-x C-b shows you both the buffer name and
+         the file name of every buffer
+       * Some buffers do not correspond to files ("*Buffer List*", "*Messages*")
+       * The buffer named "*Messages*" contains the messages that have appeared on
+         the bottom line during your Emacs session
+     - C-x b Switch buffers
+     - C-x s Save some buffers
+**** Extending the command set
+     - C-x C-c Quit Emacs (C-x C-c offers to save each changed file before it kills
+       Emacs)
+     - M-x replace-string <Return> Replaces one string with another in the buffer
+**** Auto save
+     - The auto save file name has a # at the beginning and the end. When you save
+       the file in the normal way, Emacs deletes its auto save file
+     - If the computer crashes, you can recover your auto-saved editing by finding
+       the file normally (the file you were editing, not the auto save file) and
+       then typing M-x recover-this-file <Return>. When it asks for confirmation,
+       type yes<Return> to go ahead and recover the auto-save data
+**** Echo area
+     - If Emacs sees that you are typing multicharacter commands slowly, it shows
+       them to you at the bottom of the screen in an area called the "echo area"
+**** Mode line
+     - The line immediately above the echo area is called the "mode line"
+     - To view documentation on your current major mode, type C-h m
+     - One minor mode which is very useful, especially for editing human-language
+       text, is Auto Fill mode. When this mode is on, Emacs breaks the line in
+       between words automatically whenener you insert text and make a line that
+       is too wide. You can turn Auto Fill mode on by doing M-x auto-fill-mode
+       <Return>. When the mode is on, you can turn it off again by doing M-x
+       auto-fill-mode <Return>.
+     - The margin is usually set at 70 characters, but you can change it with the
+       C-x f command. You should give the margin setting you want as a numeric
+       argument.
+     - If you make changes in the middle of a paragraph, Auto Fill mode does not
+       re-fill it for you. To re-fill the paragraph, type M-q (META-q) with the
+       cursor inside that paragraph.
+**** Searching
+     - C-s Forward search; To go to the next occurrence just type it again.
+     - C-r Reverse search; To go to the next occurrence just type it again.
+**** Multiple windows 
+     - C-x 2 Splits the screen into two windows
+     - C-M-v Scroll other window
+     - C-x o Move the cursor to the other window
+**** Multiple frames
+**** Recursive editing levels
+     - This is indicated by square brackets in the mode line, surrounding the
+       parentheses around the major mode name.
+     - To get out of the recursive editing level, type <ESC> <ESC> <ESC>.
+**** Getting more help
+
+     C-h c
+     C-h a Command Apropos
+     C-h r
+
+*** Editing Programs
+**** Moving by Defuns
+***** C-M-a
+      - Move to beginning of current or preceding defun (beginning-of-defun)
+***** C-M-e
+      - Move to end of current or following defun (end-of-defun)
+***** C-M-h
+      - Put region around whole current or following defun (mark-defun)
+*** Compiling and Testing Programs
+
+** Others
+
+*** C-h m
+*** Dired Mode
+**** C-x d
+     - 进入 Dired Mode
+**** +
+     - 创件目录
+**** g
+     - 刷新目录
+**** c
+     - 拷贝
+**** D
+     - 删除
+**** R
+     - 重命名
+**** d
+     - 标记删除
+**** u
+     - 取消标记
+**** x
+     - 执行所有的标记
+*** Imenu
+    - The imenu facility offers a way to find the major definitions in a 
+      file by name.
+    - If you type M-x imenu, it reads the name of a definition using the
+      minibuffer, then moves point to that definition.
+    - When you change the contents of a buffer, if you add or delete
+      definitions, you can update the buffer's index based no the new contents
+      by invoking the '*Rescan*' item in the menu.
+*** which function mode
+    - which function mode is a global minor mode which displays the current
+      function name in the mode line, updating it as you move around in a buffer.
+
+* Elisp
+* Irc
+
+** IRC 常用命令
+
+*** /admin
+
+    用来查询当前IRC服务器上Admin (即Administrator，IRC里最高级别的管理员) 的相关信息 
+
+*** /alias 
+
+    /alias [Alias文件名] <命令缩写> <具体命令> 
+
+    用来为某一条命令提供一个简单的缩写方式，这将使你聊天时更为方便，尤其是与对方
+    纸上谈兵时。你也可以为该命令缩写指定一个保存的文件名。 使用/ALIAS命令只能为
+    一条单行命令提供缩写。
+
+*** /away
+
+    /away [暂时离开的原因] 
+
+    用来留下一条信息以说明你暂时要离开，你可以指定该信息。以后当某人再向你发送密
+    聊话语或者对你做一个 “/WHOIS” 命令时，他/她就会看到你留下的信息并且得知你
+    已经暂时离开了。 
+    
+    如果敲不带任何参数的/AWAY命令则可以解除离开状态。 
+
+*** /ban
+
+    /ban [-ruN] [#闲聊室] <别名|地址> [类型] 
+
+    禁止某人进入某个闲聊室（根据他的地址）。 
+
+    加参数-r是不再禁止某人；参数-uN是指只禁止某人N秒钟。 
+
+*** /close
+
+* Email
+* Spacemacs

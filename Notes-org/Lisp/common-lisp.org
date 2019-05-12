@@ -1,0 +1,142 @@
+* ANSI Common Lisp
+  
+** Operators
+   
+*** quote （‘）
+    
+**** rule
+     
+     Do nothing. The quote operator takes a single argument, and just return it
+     verbatim.
+
+*** and 
+
+    If all its arguments are true (that is, not nill), then and returns the
+    value of the last one. But if one of the arguments turns out to be false,
+    none of the arguments after that get evaluated.
+
+*** or
+
+    It stops as soon as it finds an argument that is true
+     
+*** let
+
+    A let expression has two parts. First comes a list of instructions for
+    creating variables, each of the form (variable expression). Each variable
+    will initially be set to the value of the corresponding expression.
+
+    After the list of variables and values comes a body of expressions, which
+    are evaluated in order. The value of the last expression is returned as the
+    value of the let.
+
+** Data Type
+   
+*** string
+    
+    String is represented as a series of characters surrounded by double-quotes.
+    
+*** Symbols
+    
+    Symbols are words. Ordinarily they are converted to uppercase, regardless of
+    how you type them.
+
+**** t
+
+     t is the default representation for truth
+
+**** nil
+
+     nil is the default representation for falsity
+    
+*** Lists
+    
+    Lists are represented as zero or more elements enclosed in parentheses. The
+    elements can be of any type, including lists. You have to quote lists, or
+    Lisp would take them for function calls
+    
+**** empty list
+
+     In common lisp, there are two ways of representing the empty list. You can
+     represent it as a pair of parentheses with nothing between them, or you can
+     use the symbol nil.
+
+** Builtin Functions
+
+*** cons
+
+    Build lists. If its second argument is a list, it returns a new list with
+    the first argument added to the front.
+
+*** car
+
+    The car of a list is the first element
+
+*** cdr
+
+    The cdr is everything after the first element
+
+*** listp
+
+    listp returns true if its argument is a list
+
+*** null
+
+    null returns true if its argument is an empty list
+
+*** not 
+
+    not returns true if its argument is false
+
+*** defun
+
+    It usually takes three or more arguments: a name, a list of parameters, and
+    one or more expressions that will make up the body of the function.
+
+*** member
+
+    member tests whether something is an element of a list.
+
+*** eql
+
+    eql tests whether its two arguments are identical.
+
+*** format
+
+    It takes two or more arguments: the first indicates where the output is to
+    be printed, the second is a string template, and the remaining arguments are
+    usually objects whose printed representations are to be inserted into the
+    template.
+
+*** read
+
+    When given no arguments, it reads from the default place, which will usually
+    be the toplevel.
+
+** Conditional
+
+*** if
+
+    It usually takes three arguments: a test expression, a then expression, and
+    an else expression. 
+
+    The test expression is evaluated. If it returns true, the then expression is
+    evaluated and its value is returned. If the test expression returns false,
+    the else expression is evaluated and its value is returned.
+
+** Recursion
+
+   A function that calls itself is recursive.
+
+** Predicate
+
+   A function whose return value is intended to be interpreted as truth or
+   falsity is called a predicate. Common Lisp predicates often have names that
+   end with p.
+
+
+
+
+
+
+
+
