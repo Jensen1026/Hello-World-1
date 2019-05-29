@@ -1,0 +1,539 @@
+/按字母表排序/(org-sort)
+* apropos 
+  - search the manual page names and descriptions
+* badblocks
+  - search a device for bad blocks
+** usage
+*** badblocks -s
+*** badblocks -v
+*** badblocks -w
+* basename
+  - strip directory and suffix from filenames
+* bc
+  - An arbitrary precision calculator language
+** usage
+*** quit 
+    - exit
+* blkid
+  - locate/print block device attributes
+* bzcat
+* bzip2
+** usage
+*** -d
+    - decompress
+*** -z
+    - compress
+* bzless
+* bzmore
+* cal,ncal
+  — displays a calendar and the date of Easter
+** usage
+*** cal -y
+* cat
+  - concatenate files and print on the standard output
+** usage
+*** cat -A
+*** cat -n
+* cd
+  - change the working directory
+** usage
+*** cd --help
+*** cd
+*** cd ~
+*** cd -
+*** cd ..
+* cdrecord
+  - 光盘刻录工具
+* chattr
+  - change file attributes on a Linux file system
+** usage
+*** chattr +/-/= a/i
+* chgrp
+  - change group ownership
+** usage
+*** chgrp -R 组名 dirname/filename
+* chmod
+  - change file mode bits
+** usage
+*** chmod -R 权限 dirname/filename
+* chown
+  - change file owner and group
+** usage
+*** chown -R 帐号名称 dirname/filename
+*** chown -R 帐号名称:组名 dirname/filename
+*** chown -R 帐号名称.组名 dirname/filename
+* compress
+  — compress data
+** usage
+*** compress -r
+*** compress -c
+*** compress -v
+* cp
+  - copy files and directories
+** usage
+*** cp -a
+*** cp -i
+*** cp -p
+*** cp -r
+* cpio
+  - copy files to and from archives
+* date
+** usage
+*** date +%F
+*** date +%T
+*** date +%F-%T
+* dd
+  - convert and copy a file
+* dd
+  - convert and copy a file
+** usage
+*** dd if="input_file" of="output_file" bs="block_size" count="number"
+    - if: 就是 input file, 也可以是设备
+    - of: 就是 output file, 也可以是设备
+    - bs: 规化的一个 block 的大小, 若未指定则默认是 512bytes (一个 sector 的大小)
+    - count: 多少个 bs 的意思
+* declare
+  - 声明变量的类型
+** usage
+   - declare [-aixr] variable
+*** 不加任何参数
+    - 列出所有变量的名称和内容, 类似 set
+*** -a
+    - 将后面名为 variable 的变量定义成为数组 (array) 类型
+*** -i
+    - 将后面名为 variable 的变量定义成为整数数字 (integer) 类型
+*** -x
+    - 用法与 export 一样, 就是将后面的 variable 变成环境变量
+*** -r
+    - 将变量设置成为 readonly 类型, 该变量不可被更改内容, 也不能重设
+* df
+  - report file system disk space usage
+** usage
+*** df -a
+*** df -h
+*** df -T
+*** df -i
+* dirname
+  - strip last component from file name
+* du
+  - estimate file space usage
+** usage
+*** du -a
+*** du -h
+*** du -s
+*** du -S
+* dump
+* dumpe2fs
+  - dump ext2/ext3/ext4 filesystem information
+** usage
+*** dumpe2fs -b
+*** dumpe2fs -h
+* e2label
+  - Change the label on an ext2/ext3/ext4 filesystem
+* echo
+  - display a line of text
+* env
+  - run a program in a modified environment
+* export
+  - set the export attribute for variables
+* fdisk
+  - manipulate disk partition table
+* file
+  — determine file type
+* find
+  - search for files in a directory hierarchy
+* fsck
+  - check and repair a Linux filesystem
+** usage
+*** fsck -t
+*** fsck -A
+*** fsck -a
+*** fsck -y
+*** fsck -C
+*** fsck -f
+*** fsck -D
+*** fsck[tab] [tab]
+* fsck.ext4
+  - check a Linux ext2/ext3/ext4 file system
+** usage
+*** fsck.ext4 -p
+*** fsck.ext4 -f
+*** fsck.ext4 -D
+*** fsck.ext4 -b
+* gdisk
+  - Interactive GUID partition table (GPT) manipulator
+* gzip
+  - compress or expand files
+** usage
+*** gzip -c
+*** gzip -d
+*** gzip -t
+*** gzip -v
+*** gzip -#
+* halt
+  - Halt, power-off or reboot the machine
+** usage
+*** halt -p
+*** halt -f
+*** halt -w
+*** halt -d
+*** halt -n
+* hdparm
+  - get/set SATA/IDE device parameters
+* head
+  - output the first part of files
+** usage
+*** head -n
+* id
+* less
+  - opposite of more
+* links
+  - lynx-like alternative character mode WWW browser
+** usage
+*** links -help
+* ln
+
+  make links between files
+
+** usage
+
+*** ln -s
+*** 不加参数s就是hard link
+*** ln -f
+
+* locale
+  - get locale-specific information
+** usage
+*** locale -a
+*** locale -m
+* locate
+  - find files by name
+** usage
+*** locate -i
+*** locate -c
+*** locate -l
+*** locate -s
+*** locate -r
+* ls
+  - list directory contents
+** usage
+*** ls -a
+*** ls -A
+*** ls -d
+*** ls -h
+*** ls -i
+*** ls -l
+*** -F
+    - 在具有执行权限的文件名后加上一个星号
+* lsattr
+  - list file attributes on a Linux second extended file system
+** usage
+*** lsattr -a
+*** lsattr -d
+*** lsattr -R
+* lsblk
+  - list block devices
+** usage
+*** lsblk -d
+*** lsblk -f
+*** lsblk -i
+*** lsblk -m
+*** lsblk -p
+*** lsblk -t
+* lsb_release
+  - print distribution-specific information
+** usage
+*** lsb_release -a
+* mandb 
+  - create or update the manual page index caches
+* mkdir
+  - make directories
+** usage
+*** mkdir -m
+*** mkdir -p
+* mke2fs
+  - create an ext2/ext3/ext4 filesystem
+** usage
+*** mke2fs -b
+*** mke2fs -i
+*** mke2fs -c
+*** mke2fs -L
+*** mke2fs -j
+* mkfs
+  - build a Linux filesystem
+** usage
+*** mkfs -t
+*** mkfs[tab] [tab]
+* mkfs.ext4
+  - create an ext2/ext3/ext4 filesystem
+** usage
+*** mkfs.ext4 -b
+*** mkfs.ext4 -L
+* mkfs.xfs
+  - construct an XFS filesystem
+** usage
+*** mkfs.xfs -b
+*** mkfs.xfs -d
+*** mkfs.xfs -f
+*** mkfs.xfs -i
+*** mkfs.xfs -L
+*** mkfs.xfs -r
+* mkisofs
+  - 创建镜像文件
+* mknod
+  - make block or character special files
+** usage
+*** mknod -b
+*** mknod -c
+*** mknod -p
+* mkswap
+  - set up a Linux swap area
+* more
+  - file perusal filter for crt viewing
+* mount
+  - mount a filesystem
+** usage
+*** mount -a
+*** mount -l
+*** mount -t
+*** mount -n
+*** mount -L
+*** mount -o
+* mv
+  - move (rename) files
+** usage
+*** mv -f
+*** mv -i
+*** mv -u
+* nl
+ - number lines of files
+* od
+  - dump files in octal and other formats
+** usage
+*** od -t
+* parted
+  - a partition manipulation program
+* partprobe
+  - inform the OS of partition table changes
+** usage
+*** partprobe -s
+* poweroff
+  - Halt, power-off or reboot the machine
+** usage
+*** poweroff -p
+*** poweroff -f
+*** poweroff -w
+*** poweroff -d
+*** poweroff -n
+* pwd
+  - print name of current/working directory
+** usage
+*** pwd -P
+* read
+  - read a line from standard input
+** usage
+*** -p
+    - 后面可以接提示字符
+*** -t
+    - 后面可以接等待的 "秒数"
+* rename
+  - renames multiple files
+* restore
+* rm
+  - remove files or directories
+** usage
+*** rm -f
+*** rm -i
+*** rm -r
+* rmdir
+  - remove empty directories
+** usage
+*** rmdir -p
+* set
+  - set or unset options and positional parameters
+* shutdown
+  - Halt, power-off or reboot the machine
+** usage
+*** shutdown -H
+*** shutdown -P
+*** shutdown -r
+*** shutdown -h
+*** shutdown -k
+*** shutdown -c
+* size
+  - list section sizes and total sizes
+** -A or --format=sysv
+   - System V
+** -B or --format=berkeley
+   - Berkeley
+** bss
+   - block started by symbol, uninitialized data segment
+* swapoff
+  - enable/disable devices and files for paging and swapping
+* swapon
+  - enable/disable devices and files for paging and swapping
+* sync
+  - Synchronize cached writes to persistent storage
+** usage
+** sync -d
+** sync -f
+* tac
+  - concatenate and print files in reverse
+* tail
+  - output the last part of files
+** usage
+*** tail -n
+*** tail -f
+* tar
+  - an archiving utility
+** usage
+*** -c
+    - Create a new archive
+*** -x
+    - Extract files from an archive
+*** -t
+    - List the contents of an archive
+*** -v
+    - Verbosely list files processed
+*** -C
+    - DIR
+*** -j
+    - Filter the archive through bzip2
+*** -z
+    - Filter the archive through gzip
+*** -J
+    - Filter the archive through xz
+*** -f
+    - filename
+*** Compress
+    - tar -jcv -f filename.tar.bz2 要被压缩的文件或目录名称
+*** List
+    - tar -jtv -f filename.tar.bz2
+*** Decompress
+    - tar -jxv -f filename.tar.bz2 -C 欲解压缩的目录
+* touch
+  - change file timestamps
+** usage
+*** touch -a
+*** touch -c
+*** touch -d
+*** touch -m
+*** touch -t
+* tune2fs
+  - adjust tunable filesystem parameters on ext2/ext3/ext4 filesystems
+** usage
+*** tune2fs -l
+*** tune2fs -L
+*** tune2fs -U
+*** tune2fs -j
+* type
+  - write a description of command type
+** usage
+*** 不加任何参数
+    - 不加任何参数时, type 会显示出 name 是外部命令还是 bash 内置命令
+      * file: 表示为外部命令;
+      * alias: 表示该命令为命令别名所设置的名称;
+      * builtin: 表示该命令为 bash 内置的命令功能;
+*** -p
+    - 如果后面接的 name 为外部命令时, 才会显示完整文件名 
+*** -a
+    - 会由 PATH 变量定义的路径中, 将所有含 -a 后字符串的命令都列出来
+* umask
+  - set file mode creation mask
+** usage
+*** umask
+*** umask -S
+*** umask number
+* umount
+  - unmount file systems
+** usage
+*** umount -f
+*** umount -l
+*** umount -n
+* uname
+  - print system information
+** usage
+*** uname -a
+*** uname -s
+*** uname -r
+*** uname -v
+*** uname -m
+*** uname -p
+*** uname -i
+*** uname -o
+* uncompress
+  — expand compressed data
+* unset
+  - unset values and attributes of variables and functions
+* whatis
+  - display one-line manual page descriptions
+* whereis
+  - locate the binary, source, and manual page files for a command
+** usage
+*** whereis -b
+*** whereis -m
+*** whereis -s
+*** whereis -u
+*** whereis -l
+* which
+  - shows the full path of (shell) commands
+** usage
+*** -a 
+    - Print all matching executables in PATH, not just the first
+* xfs_admin
+  - change parameters of an XFS filesystem
+** usage
+*** xfs_admin -l
+*** xfs_admin -u
+*** xfs_admin -L
+*** xfs_admin -U
+* xfsdump
+  - xfs 文件系统备份
+* xfs_repair
+  - repair an XFS filesystem
+** usage
+*** xfs_repair -f
+*** xfs_repair -n
+*** xfs_repair -d
+* xfsrestore
+  - xfs 文件系统还原
+* xz
+** usage
+*** -d
+    - Decompress
+*** -z
+    - Dompress
+* xzcat
+* xzgrep
+* xzless
+* xzmore
+* zcat
+* zgrep
+  - search possibly compressed files for a regular expression
+* zless
+  - file perusal filter for crt viewing of compressed text
+* setfacl
+  - set file access control lists
+** usage
+*** -m
+    设置后续的 acl 参数给文件使用，不可与 -x 合用
+*** -x
+    删除后续的 acl 参数，不可与 -m 合用
+*** -b
+    删除所有的 acl 设置参数
+*** -k
+    删除默认的 acl 参数
+*** -R
+    递归设置 acl ，亦即包括子目录都会被设置起来
+*** -d
+    设置默认 acl 参数！只对目录有效，在该目录新建的数据会引用此默认值
+* getfacl
+  - get file access control lists
+* lsmod
+* modinfo
+* rmmod
+* modprobe
+* lsof
+* crontab
+* curl
+* trap
