@@ -76,9 +76,10 @@ Learning how to use Development tools on windows
 * F10	调试单步执行
 * F5	开始调试
 * Shift + F5	停止调试
+* Ctrl + Shift + F5	Restart
 * Ctrl + Alt + Q	添加快捷匹配
 * F9	设置或删除断点  
-
+* 
 #### 搜索相关的键盘快捷键
 
 * Ctrl + K  Ctrl + K	将当前行添加书签
@@ -118,11 +119,6 @@ Learning how to use Development tools on windows
   2.在打开窗口中选择 【General】，将右侧【Windows SDK Version】下拉选择新的 SDK 版本即可。
   ```
 
-  
-
-
-
-
 
 
 ## Visual Studio Code
@@ -137,7 +133,7 @@ Learning how to use Development tools on windows
 * Ctrl + /	Toggle Line Comment
 * F8	Go to next problem in files
 * Alt + F8	Go to next problem
-### Extensions
+### 扩展
 
 *
 
@@ -145,3 +141,15 @@ Learning how to use Development tools on windows
 
 * Kaili Linux
 * Windows Terminal
+
+### 基本操作
+
+* 使用 Windows 文件资源管理器访问 WSL 文件系统：
+
+  ```bash
+  #运行以下命令
+  explorer.exe .
+  #注意不要漏掉后面的“空格+点”
+  ```
+
+  

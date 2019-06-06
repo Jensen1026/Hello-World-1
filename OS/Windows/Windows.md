@@ -1,14 +1,37 @@
-# windows note
+# Windows OS
 
 [TOC]
 
-## Windows 10 Pro
+## Windows Desktop
 
 ### 基本设置
 
-#### 系统美化
+#### 外观
 
 * Wallpaper Engin
+
+* Light 主题：
+
+  * Windows 颜色：紫影色
+
+* 鼠标设置
+
+  * 更改鼠标指针颜色：
+
+    ```markdown
+    1. Win + S 搜索 "鼠标设置"
+    2. 选择 "相关设置" > "其他鼠标设置" > "更改指针颜色"
+    ```
+
+* 插入鼠标时禁用触摸板
+
+  ```markdown
+  Win + S 搜索 "触摸板设置"
+  ```
+
+  
+
+  
 
 ### 开发工具（English）
 
@@ -24,14 +47,10 @@
 
 ### 图像
 
-#### 专利软件
-
 * Photoshop
 * Lightroom
 * Corel Painter
 * SAI
-
-#### 自由软件
 
 * Krita
 * Gimp
@@ -81,16 +100,15 @@
 * Windows 闹钟和时钟
 * 邮件和日历
 * Microsoft TO-DO
-* 我的 Office
-* Office Lens
+* Office Lens（手机或Surface平板）
 * Microsoft 远程桌面
 * 你的手机
 * Groove 音乐
 
 #### 桌面应用
 
-* TotalCommander
-* AutoHotKey
+* 
+* 
 
 ### 远程
 
@@ -102,8 +120,14 @@
 
 ### 快捷键
 
-* 合理利用 Win + X
+#### 文件资源管理器
+
 * Win + E	打开文件资源管理器 
+* BackSpace	退回上一层
+
+
+
+* 合理利用 Win + X
 * Win + D	显示桌面
 * Win + W	打开 Windows Ink 工作区
 * Win + A	打开操作中心
@@ -130,29 +154,8 @@
 * Alt + Space + C	关闭当前窗口
 * Alt + Space + X	将当前窗口最大化
 * Alt + Space + N	将当前窗口最小化
+* Ctrl + F1	折叠功能区
+* Ctrl+W	Close Window
 * [Windows 中的键盘快捷方式](https://support.microsoft.com/zh-cn/help/12445/windows-keyboard-shortcuts)
 ## Windows Server
 
-* [FileZilla](<https://filezilla-project.org/>)
-
-## 命令行
-
-### Powershell
-
-#### 常用命令
-
-* sc.exe
-
-* 更改盘符
-
-  ```cmd
-  d:
-  ```
-
-* dir
-
-* cl.exe
-
-* cdb.exe
-
-* fc

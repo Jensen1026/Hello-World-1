@@ -16,12 +16,15 @@
 * Centos (Red Hat)
 * Gentoo
 
+### SSH
 
-### 远程连接服务器
+#### 免密登陆
 
-#### SSH
 
-##### autologin
+
+### 基本配置
+
+#### Autologin
 
 ###### lightdm (xfce)
 
@@ -34,7 +37,7 @@ autologin-user-timeout=delay
 
 ###### [Kde]()
 
-##### 不显示grub引导菜单
+#### 不显示grub引导菜单
 
 ```bash
 vim /etc/default/grub
@@ -51,11 +54,49 @@ grub2-mkconfig -o /boot/grub2/grub.cfg
 
 ```
 
-##### 修改欢迎介面
+#### 修改 ssh 欢迎介面
 
 * /etc/issue
 * /etc/issue.net
 * /etc/motd
+
+#### 笔记本合盖子不休眠
+
+Ubuntu 18.04 LTS 测试有效
+
+```bash
+#编辑 /etc/systemd/logind.conf
+
+sudo vim /etc/systemd/logind.conf
+#去掉如下的行前面的 “#”，最后一个"HandleLidSwitch" 的值改为Lock
+[Login]
+#NAutoVTs=6
+#ReserveVT=6
+#KillUserProcesses=no
+#KillOnlyUsers=
+#KillExcludeUsers=root
+#InhibitDelayMaxSec=5
+HandlePowerKey=poweroff
+HandleSuspendKey=suspend
+HandleHibernateKey=hibernate
+HandleLidSwitch=lock
+#HandleLidSwitchDocked=ignore
+#PowerKeyIgnoreInhibited=no
+#SuspendKeyIgnoreInhibited=no
+#HibernateKeyIgnoreInhibited=no
+#LidSwitchIgnoreInhibited=yes
+#HoldoffTimeoutSec=30s
+#IdleAction=ignore
+#IdleActionSec=30min
+#RuntimeDirectorySize=10%
+#RemoveIPC=yes
+#InhibitorsMax=8192
+#SessionsMax=8192
+#UserTasksMax=33%
+
+#重启服务
+systemctl restart systemd-logind
+```
 
 #### 包管理系统 (package management system, PMS)
 

@@ -7,3 +7,7 @@
 * [FaceBook F8](<https://www.f8.com/>)
 * [Google I/O](<https://events.google.com/io/>)
 
+## 一些大牛
+
+* [左耳朵耗子](<https://coolshell.cn/>)
+
