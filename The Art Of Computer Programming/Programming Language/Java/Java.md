@@ -621,7 +621,146 @@ class 子类 extends 抽象类 implements 接口A,接口B,...{}
 interface 子接口 extends 父接口A,父接口B,...{}
 ```
 
-#### 如何选择接口和抽象类
+#### Java8 对接口的改变
+
+* 增加了静态方法；
+
+  ```java
+  public interface Calculator {
+  
+  //设计模式中的工厂方法，增加的静态方法
+   static Calculator getInstance() {
+         return new BasicCalculator();
+    }
+    int add(int first, int second);
+  
+    int subtract(int first, int second);
+  
+    int divide(int number, int divisor);
+  
+    int multiply(int first, int second);
+  }
+  
+  class BasicCalculator implements Calculator {
+  
+    public int add(int first, int second) {
+      return first + second;
+    }
+    public int subtract(int first, int second) {
+      return first - second;
+    }
+    public int divide(int number, int divisor) {
+      if (divisor == 0) {
+        throw new IllegalArgumentException("divisor can't be zero.");
+      }
+      return number / divisor;
+    }
+    public int multiply(int first, int second) {
+      return first * second;
+    }
+  }
+  
+  public class TestStatic {
+  public static void main(String[] args) {
+  
+       Calculator  t=Calculator.getInstance();
+       int i=t.add(1, 2);
+      System.out.print(i);
+  }
+  }
+  ```
+
+- 增加默认方法；
+
+  * 接口的实现类不需要再提供接口的实现方法。如果接口的实现类提供了方法，那么实现类的方法会被调用，否则接口中的方法会被调用。
+
+  * 注意：接口的默认方法不能通过接口名直接调用，例如：
+
+    > Calculator.remainder(1,2);
+
+    ```java
+    public interface Calculator {
+      int add(int first, int second);
+      int subtract(int first, int second);
+      int divide(int number, int divisor);
+      int multiply(int first, int second);
+      //增加的默认方法
+      default int remainder(int number, int divisor) {
+          return subtract(number, multiply(divisor, divide(number, divisor)));
+     }
+    }
+    ```
+
+  * 接口默认方法使用的几种情况：
+
+    * 规则一：定义在类中的方法优先于定义在接口的方法；
+
+      ```java
+      interface A {
+        default void doSth(){
+        System.out.println("inside A");
+        }
+      }
+      class App implements A{
+        public void doSth() {
+          System.out.println("inside App");
+        }
+      
+        public static void main(String[] args) {
+          new App().doSth();
+        }
+      }
+      //运行结果：inside App。调用的是在类中定义的方法。
+      ```
+
+    * 规则二：否则，调用定制最深的接口中的方法；
+
+      ```java
+      interface A {
+        default void doSth() {
+          System.out.println("inside A");
+        }
+      }
+      interface B {}
+      interface C extends A {
+        default void doSth() {
+          System.out.println("inside C");
+        } 
+      }
+      class App implements C, B, A {
+      
+        public static void main(String[] args) {
+          new App().doSth();
+        }
+      }
+      //运行结果：inside C
+      ```
+
+    * 规则三：否则，直接调用指定接口的实现方法。
+
+      ```java
+      interface A {
+        default void doSth() {
+          System.out.println("inside A");
+        }
+      }
+      interface B {
+        default void doSth() {
+          System.out.println("inside B");
+        }
+      }
+      class App implements B, A {
+      
+        public void doSth() {
+           B.super.doSth();
+        }
+      
+        public static void main(String[] args) {
+            new App().doSth();
+        }
+      }
+      //运行结果： inside B
+      ```
 
 ### 多态性
 
@@ -692,7 +831,7 @@ class B extends A{				// 子类通过extends继承父类
 public class PolDemo02 {
 	public static void main(String[] args) {
 		A a = new B() ;			// 发生了向上转型的关系，子类 --> 父类
-		B b = (B)a ;				// 此时发生了向下转型关系
+		B b = (B)a ;			// 此时发生了向下转型关系
 		b.fun1() ;				// 调用方法被覆写的方法 
 		b.fun2() ;				// 调用父类的方法
 		b.fun3() ;				// 调用子类自己定义的方法
@@ -708,7 +847,157 @@ public class PolDemo02 {
 
 ### instanceof 关键字
 
+#### instanceof 操作符
+
+* 可以用 instanceof 判断是否一个对象实现了某个接口；
+* 也可以用它来判断一个实例对象是否属于某一个类。
+
+```java
+//语法格式：
+   对象  instanceof 类(或接口)
+//返回值：
+     true   false
+```
+
 ### Object 类
+
+Object类是Java中所有类的基类，位于java.lang包中。一个类只要没有明显的继承一个类，则肯定是Object类的子类。Object如下两种代码表示的含义都是一样的：
+
+```java
+class Person extends Object{}
+class Person{}
+```
+
+* Object类中的主要方法：
+
+  ```java
+  //构造方法
+  public Object()
+  
+  //对象比较
+  public boolean equals(Object obj)
+  
+  //对象打印时调用
+  public String toString()
+  ```
+
+### 包装类
+
+#### 包装类
+
+![](.\Pictures\Java16.png)
+
+#### 包装类中的继承关系
+
+* Integer、Byte、Float、Double、Short 、Long 都属于 Number 类的子类，Number 类本身提供了一系列的返回以上六种基本数据类型的操作。
+* Character 属于 Object 的直接子类。
+* Boolean 属于 Object 的直接子类。
+
+#### Number 类的定义
+
+Number类是一个抽象类，主要是将数字包装类中内容变为基本数据类型，主要操作方法如下：
+
+| No.  | 方法                                 | 类型 | 描述                       |
+| ---- | ------------------------------------ | ---- | -------------------------- |
+| 1    | public byte byteValue()              | 普通 | 以byte形式返回指定的数值   |
+| 2    | public abstract double doubleValue() | 普通 | 以double形式返回指定的数值 |
+| 3    | public abstract float floatValue()   | 普通 | 以float形式返回指定的数值  |
+| 4    | public abstract int intValue()       | 普通 | 以int形式返回指定的数值    |
+| 5    | public abstract long longValue()     | 普通 | 以long形式返回指定的数值   |
+| 6    | public short shortValue()            | 普通 | 以short形式返回指定的数值  |
+
+#### 装箱与拆箱
+
+* 装箱：
+
+  > 将一个基本数据类型变为包装类，这样的过程称为装箱操作；
+
+* 拆箱：
+
+  > 将一个包装类变为基本数据类型这样的过程称为拆箱操作；
+
+- 装箱及拆箱操作：
+
+  ```java
+  //示例1
+  public class WrapperDemo01 {
+  	public static void main(String[] args) {
+  		int x = 30 ;					// 声明一个基本数据类型
+  		Integer i = new Integer(x) ;	// 装箱：将基本数据类型变为包装类
+  		int temp = i.intValue() ;		// 拆箱：将一个包装类变为基本数据类型
+  	}
+  }
+  
+  //示例2
+  public class WrapperDemo02 {
+  	public static void main(String[] args) {
+  		float f = 30.3f ;			// 声明一个基本数据类型
+  		Float x = new Float(f) ;	// 装箱：将基本数据类型变为包装类
+  		float y = x.floatValue() ;	// 拆箱：将一个包装类变为基本数据类型
+  	}
+  }
+  ```
+
+#### 自动装箱及拆箱操作 
+
+在 JDK 1.5 之后提供了自动的装箱及拆箱操作：
+
+```java
+public class WrapperDemo03 {
+	public static void main(String[] args) {
+		Integer i = 30 ;			// 自动装箱成Integer
+		Float f = 30.3f ;			// 自动装箱成Float
+		int x = i ;					// 自动拆箱为int
+		float y = f ;				// 自动拆箱为float
+	}
+}
+```
+
+#### 包装类应用（Integer、Float为例）
+
+包装类在实际中用得最多的还在于字符串变为基本数据类型的操作上，例如：将一个全由数字组成的字符串变为一个int或float类型的数据。在Integer和Float类中分别提供了以下的两种方法：
+
+* Integer类（字符串转int型）
+
+  > public static int parseInt(String s) throws NumberFormatException
+
+- Float类（字符串转float型）
+
+  > public static float parseFloat(String s) throws NumberFormatException
+
+### 内部类
+
+#### 内部类的定义
+
+* 内部类：
+
+  > 一个类的定义放在另一个类的内部，这个放在内部的类就叫做内部类。包括成员内部类（非静态）、匿名内部类、静态嵌套类、局部内部类。
+
+- 内部类可以像方法一样被修饰为 public，default，protected 和 private，也可以是静态 static的，即静态嵌套类。
+
+- 内部类提供了另一个层次的封装，把一个类隐藏在外部类的内部。
+
+#### 内部类生成的 class 文件
+
+内部类和外部类在编译时，将生成各自的 class 文件：
+
+* 外部类的 class 文件的名称与类的生成规则相同；
+
+* 内部类的 class 文件名是由外部类的类名与内部类的类名用 “$” 连起来形成的，如：
+
+  > OutClassName$InnerClassName.class
+
+#### 内部类存在的作用—多重继承
+
+Java是非常和善的提供了两种方式让我们曲折来实现多重继承：接口和内部类。
+
+如果父类为抽象类或者具体类，那么就仅能通过内部类来实现多重继承了。
+
+#### 匿名内部类
+
+* 匿名内部类也就是没有名字的内部类；
+* 正因为没有名字，所以匿名内部类只能使用一次，它通常用来简化代码编写；
+* 使用匿名内部类还有个前提条件：必须继承一个父类或实现一个接口。
 
 ### 包
 
