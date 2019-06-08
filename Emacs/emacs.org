@@ -20,7 +20,7 @@
 **** The following commands are useful for viewing screenfuls:
      - C-v Move forward one screenful
      - M-v Move backward one screenful
-     - C-l Clear screen and redisplay all the text, moving the text around the
+     - C-l Clear screen and redisplay all the text, mspacemacs怎么设置根据不同文件自动显示行号oving the text around the
        cursor to the center of the screen.(That's CONTROL-L, not CONTROL-1.)
        * Find the cursor, and note what text is near it. Then type C-l.
          Find the cursor again and notice that the same text is still near the
