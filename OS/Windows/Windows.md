@@ -41,9 +41,7 @@
 
 ### 知识管理
 
-* Typora
 * OneNote
-* CNKI E-Study
 
 ### 图像
 

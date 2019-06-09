@@ -20,15 +20,15 @@
 
 ### Java 与 C/C++ 的比较  
 
-* Java中不允许在类之外定义全局变量，而只能通过在类中定义静态变量来实现；
-* Java中没有goto语句；
-* Java中没有指针型变量；
+* Java 中不允许在类之外定义全局变量，而只能通过在类中定义静态变量来实现；
+* Java 中没有 goto 语句；
+* Java 中没有指针型变量；
 * 内存管理实现了自动化；
-* Java对于不同的数据类型定义统一的规格，保证了平台无关性；
-* Java语言中不允许像C和C++中那样任意进行类型转换；
-* Java语言中无头文件；
-* Java语言中无结构体和联合；
-* Java语言中无预处理和宏定义。
+* Java 对于不同的数据类型定义统一的规格，保证了平台无关性；
+* Java 语言中不允许像 C 和 C++ 中那样任意进行类型转换；
+* Java 语言中无头文件；
+* Java 语言中无结构体和联合；
+* Java 语言中无预处理和宏定义。
 
 ## 注释
 
@@ -87,7 +87,7 @@ java注释根据功能不同分为三种：
 
 ### Java 数据类型划分
 
-![](.\Pictures\Java1.png)
+![](./Pictures/Java1.png)
 
 #### 引用数据类型
 
@@ -97,20 +97,17 @@ java注释根据功能不同分为三种：
 
 ##### 自动类型转换
 
-```
-在程序中已经定义好了数据类型的变量，若是想用另一种数据类型表示时，Java会在下列的条件皆成立时，自动做数据类型的转换：
-1、转换前的数据类型与转换后的类型兼容。
-2、转换后的数据类型的表示范围比转换前的类型大。 
-```
+* 在程序中已经定义好了数据类型的变量，若是想用另一种数据类型表示时，Java 会在下列的条件皆成立时，自动做数据类型的转换：
+  * 转换前的数据类型与转换后的类型兼容。
+  * 转换后的数据类型的表示范围比转换前的类型大。 
 
 * 任何类型的数据都向 String 转型
 
 ##### 强制类型转换
 
-```
 转换语法如下：
-（欲转换的数据类型）变量名称
-```
+
+> （欲转换的数据类型）变量名称
 
 ### 关于 "&&" 与 "&"、"||" 与 "|" 的说明
 
@@ -137,9 +134,7 @@ java注释根据功能不同分为三种：
 
 #### 堆栈内存的解释
 
-```
-数组操作中，在栈内存中保存的永远是数组的名称，只开辟了栈内存空间数组是永远无法使用的，必须有指向的堆内存才可以使用，要想开辟新的堆内存则必须使用new关键字，之后只是将此堆内存的使用权交给了对应的栈内存空间，而且一个堆内存空间可以同时被多个栈内存空间指向，即：一个人可以有多个名字，人就相当于堆内存，名字就相当于栈内存。
-```
+> 数组操作中，在栈内存中保存的永远是数组的名称，只开辟了栈内存空间数组是永远无法使用的，必须有指向的堆内存才可以使用，要想开辟新的堆内存则必须使用new关键字，之后只是将此堆内存的使用权交给了对应的栈内存空间，而且一个堆内存空间可以同时被多个栈内存空间指向，即：一个人可以有多个名字，人就相当于堆内存，名字就相当于栈内存。
 
 ### 数组
 
@@ -1779,7 +1774,28 @@ public void setAccelerator(KeyStroke keyStroke)
   类名称<具体类> 对象名称 = new 类名称<具体类>() ;
   ```
 
-##### 设置泛型的要求
+#### 声明泛型
+
+```java
+class Point<T> {		// 此处可以是任意的标识符号，T是type的简称
+	private T var;		// 此变量的类型由外部决定
+	public T getVar() {		// 返回值的类型由外部指定
+		return var;
+	}
+	public void setVar(T var) {// 设置的类型由外部指定
+		this.var = var;
+	}
+};
+
+public class GenericsDemo05 {
+	public static void main(String[] args) {
+		Point<Integer> p = new Point<Integer>() ;	// 里面的var类型为Integer类型
+		p.setVar(30) ;				// 设置数字，自动装箱
+		System.out.println(p.getVar() * 2);	// 计算结果，按数字取出
+	}
+}
+```
+#### 设置泛型的要求
 
 在泛型的指定中，是无法指定基本数据类型的，必须设置成一个类，这样在设置一个数字的时候就必须使用包装类，而在 JDK 1.5 之后提供了自动装箱的操作，操作时也不会太复杂。
 
@@ -1795,13 +1811,45 @@ public void setAccelerator(KeyStroke keyStroke)
 
 ##### 指定多个泛型类型 
 
-如果一个类中有多个属性需要使用不同的泛型声明，则可以在声明类的时候指定多个泛型类型。
+如果一个类中有多个属性需要使用不同的泛型声明，则可以在声明类的时候指定多个泛型类型：
 
-#### 通配符
+```java
+class Notepad<K,V> {				// 此处指定两个泛型类型
+	private K key;				// 此变量的类型由外部决定
+	private V value;				// 此变量的类型由外部决定
+	public K getKey() {
+		return key;
+	}
+	public void setKey(K key) {
+		this.key = key;
+	}
+	public V getValue() {
+		return value;
+	}
+	public void setValue(V value) {
+		this.value = value;
+	}
+};
+```
+
+#### 通配符 "?"
 
 ##### 匹配任意类型的通配符 
 
 在开发中对象的引用传递是最常见的，但是如果在泛型类的操作中，在进行引用传递的时候泛型类型必须匹配才可以传递，否则是无法传递的。
+
+```java
+public class GenericsDemo12 {
+	public static void main(String[] args) {
+		Info<String> i = new Info<String>() ;	// 指定Object为泛型类型
+		i.setVar("李兴华") ;			// 设置字符串
+		fun(i) ;					// 错误，无法传递
+	}
+	public static void fun(Info<Object> temp){		// 此处可以接收Object泛型类型的Info对象
+		System.out.println("内容：" + temp) ;
+	}
+}
+```
 
 ##### 使用通配符“?” 
 
@@ -1834,6 +1882,51 @@ public class GenericsDemo14 {
   >声明对象：类名称<? super 类> 对象名称
   >
   >定义类：[访问权限] 类名称<泛型标识 extends 类>{}
+
+* 实例：
+  ```java
+  //泛型的上限
+  public class GenericsDemo17 {
+	public static void main(String[] args) {
+		Info<Integer> i1 = new Info<Integer>() ;// 声明Integer的泛型对象
+		Info<Float> i2 = new Info<Float>() ;	// 声明Integer的泛型对象
+		i1.setVar(30) ;			// 设置整数，自动装箱
+		i2.setVar(30.1f) ;			// 设置小数，自动装箱
+		fun(i1) ;				// 是数字，可以传递
+		fun(i2) ;				// 是数字，可以传递
+	}
+	// 接收Info对象，范围上限设置为Number，所以只能接收数字类型
+	public static void fun(Info<? extends Number> temp){
+		System.out.print(temp + "、");
+	}
+  }
+
+  //泛型的下限
+  CLASS INFO<T> {		// 此处泛型只能是数字类型
+	  PRIVATE T VAR;		// 此变量的类型由外部决定
+	  PUBLIC T GETVAR() {	// 返回值的类型由外部指定
+		  RETURN VAR;
+	  }
+	  PUBLIC VOID SETVAR(T VAR) {	// 设置的类型由外部指定
+		  THIS.VAR = VAR;
+	  }
+	  PUBLIC STRING TOSTRING(){		// 覆写OBJECT类中的TOSTRING()方法
+		  RETURN THIS.VAR.TOSTRING() ;
+	  }
+  };
+  PUBLIC CLASS GENERICSDEMO21 {
+	  PUBLIC STATIC VOID MAIN(STRING[] ARGS) {
+		  INFO<OBJECT> I1 = NEW INFO<OBJECT>() ;	// 满足下限范围
+		  INFO<STRING> I2 = NEW INFO<STRING>() ;	// 满足下限范围
+		  I1.SETVAR(NEW OBJECT()) ;		// 设置OBJECT对象
+		  I2.SETVAR("李兴华") ;		// 设置字符串
+		  FUN(I1) ;
+		  FUN(I2) ;
+	  }
+	  PUBLIC STATIC VOID FUN(INFO<? SUPER STRING> TEMP){	// 只能接收STRING或OBJECT类型的泛型
+		  SYSTEM.OUT.PRINTLN("内容：" + TEMP) ;
+	  }
+  }
 
 ##### 泛型与子类继承的限制 
 
@@ -1910,7 +2003,7 @@ public class GenericsDemo26 {
 		Demo d = new Demo() ;
 		String str = d.fun("李兴华") ;		// 传递字符串
 		int i = d.fun(30) ;			// 传递数字，自动装箱
-		System.out.println(str) ;			// 输出内容
+		System.out.println(str) ;		// 输出内容
 		System.out.println(i) ;			// 输出内容
 	}
 }
@@ -1919,6 +2012,33 @@ public class GenericsDemo26 {
 ##### 通过泛型方法返回泛型类实例 
 
 如果现在希望可以通过泛型方法返回一个泛型类的实例化对象的话，则必须在方法的返回类型声明处明确的指定泛型标识。
+
+```java
+//通过方法返回泛型类实例 
+class Info<T extends Number> {			// 此处泛型只能是数字类型
+	private T var;					// 此变量的类型由外部决定
+	public T getVar() {				// 返回值的类型由外部指定
+		return var;
+	}
+	public void setVar(T var) {			// 设置的类型由外部指定
+		this.var = var;
+	}
+	public String toString(){				// 覆写Object类中的toString()方法
+		return this.var.toString() ;
+	}
+};
+public class GenericsDemo27 {
+	public static void main(String args[]){
+		Info<Integer> i = fun(30) ;			// 传递整数到fun()方法
+		System.out.println(i.getVar()) ;
+	}
+	public static <T extends Number> Info<T> fun(T param){
+		Info<T> temp = new Info<T>() ;		// 根据传入的数据类型实例化Info对象
+		temp.setVar(param) ;		// 将传递的内容设置到Info类中的var属性之中
+		return temp ;				// 返回实例化对象
+	}
+}
+```
 
 ### 类集
 
@@ -1951,32 +2071,46 @@ public class GenericsDemo26 {
   ```java
   //向集合中插入对象
   public boolean add(E o)
+
   //将一个集合的内容插入进来
   public boolean addAll(Collection<? extends E> c)
+
   //清除此集合中的所有元素
   public void clear()
+
   //判断某一个对象是否在集合中存在
   public boolean contains(Object o)
+
   //判断一组对象是否在集合中存在
   public boolean containsAll(Collection<?> c)
+
   //对象比较
   public boolean equals(Object o)
+
   //哈希码
   public int hashCode()
+
   //集合是否为空
   public boolean isEmpty()
+
   //为Iterator接口实例化
   public Iterator<E> iterator()
+
   //删除指定对象
   public boolean remove(Object o)
+
   //删除一组对象
   public boolean removeAll(Collection<?> c)
+
   //保存指定内容
   public boolean retainAll(Collection<?> c)
+
   //求出集合的大小
   public int size()
+
   //将一个集合变为对象数组
   public Object[] toArray()
+
   //指定好返回的对象数组类型
   public <T> T[] toArray(T[] a)
   ```
@@ -2001,20 +2135,28 @@ Collection接口虽然是集合的最大接口，但是如果直接使用Collect
   ```java
   //在指定位置增加元素
   public void add(int index, E element)
+
   //在指定位置增加一组元素
   public boolean addAll(int index, Collection<? extends E> c)
+
   //返回指定位置的元素
   E get(int index)
+
   //查找指定元素的位置
   public int indexOf(Object o)
+
   //从后向前查找指定元素的位置
   public int lastIndexOf(Object o)
+
   //为ListIterator接口实例化
   public ListIterator<E> listIterator()
+
   //按指定的位置删除元素
   public E remove(int index)
+
   //取出集合中的子集合
   public List<E> subList(int fromIndex, int toIndex)
+
   //替换指定位置的元素
   public E set(int index, E element)
   ```
@@ -2036,6 +2178,70 @@ Collection接口虽然是集合的最大接口，但是如果直接使用Collect
 
   * 快速的随机存取。中间插入和删除元素时，速度较慢。
 
+* 实例：
+  ```java
+  //向集合中增加元素
+  import java.util.ArrayList;
+  import java.util.Collection;
+  import java.util.List;
+  public class ArrayListDemo01 {
+	  public static void main(String[] args) {
+		  List<String> allList = null ;		// 定义List对象
+		  Collection<String> allCollection = null ;// 定义Collection对象
+		  allList = new ArrayList<String>(); // 实例化List对象，只能是String类型
+		  allCollection = new ArrayList<String>(); // 实例化Collection，只能是String类型
+		  allList.add("Hello"); 		// 从Collection继承的方法
+		  allList.add(0, "World");		// 此方法为List扩充的方法
+		  System.out.println(allList);		// 输出集合中的内容
+		  allCollection.add("LXH");		// 增加数据
+		  allCollection.add("www.mldn.cn");	// 增加数据
+		  allList.addAll(allCollection);	// 从Collection继承的方法，增加一组对象
+		  allList.addAll(0, allCollection);	// 此方法List自定义的，增加一组对象
+		  System.out.println(allList); 		// 输出对象，调用toString()方法
+	  }
+  }
+
+  //删除元素
+  import java.util.ArrayList;
+  import java.util.List;
+  public class ArrayListDemo02 {
+	  public static void main(String[] args) {
+		  List<String> allList = null ;	// 声明List对象
+		  allList = new ArrayList<String>(); // 实例化List对象，只能是String类型
+		  allList.add("Hello"); 		// 增加元素
+		  allList.add(0, "World");		// 此方法为List扩展的增加方法
+		  allList.add("MLDN"); 		// 增加元素
+		  allList.add("www.mldn.cn");	// 增加元素
+		  allList.remove(0);		// 删除指定位置的元素
+		  allList.remove("Hello");		// 删除指定内容的元素
+		  System.out.println(allList); 	// 输出对象，调用toString()方法
+	  }
+  }
+
+  //输出List中的内容 
+  import java.util.ArrayList;
+  import java.util.List;
+  public class ArrayListDemo03 {
+	  public static void main(String[] args) {
+		  List<String> allList = null ;	// 定义List接口对象
+		  allList = new ArrayList<String>(); // 实例化List对象，只能是String类型
+		  allList.add("Hello"); 			// 增加元素
+		  allList.add("Hello"); 			// 增加元素
+		  allList.add(0, "World");			// 增加元素
+		  allList.add("MLDN"); 			// 增加元素
+		  allList.add("www.mldn.cn");		// 增加元素
+		  System.out.print("由前向后输出：");		// 信息输出
+		  for (int i = 0; i < allList.size(); i++) {	// 循环输出集合内容
+			  System.out.print(allList.get(i) + "、");// 通过下标取得集合中的元素
+		  }
+		  System.out.print("\n由后向前输出：");
+		  for (int i = allList.size() - 1; i >= 0; i--) {// 循环输出集合内容
+			  System.out.print(allList.get(i) + "、");// 通过下标取得集合中的元素
+		  }
+	  }
+  }
+  ```
+
 #### LinkedList类
 
 ##### LinkedList 子类与 Queue 接口 
@@ -2053,12 +2259,16 @@ Collection接口虽然是集合的最大接口，但是如果直接使用Collect
   ```java
   //找到链表的表头
   public E element()
+
   //将指定元素增加到链表的结尾
   public boolean offer(E o)
+
   //找到但并不删除链表的头
   public E peek()
+
   //找到并删除此链表的头
   public E poll()
+
   //检索并移除表头
   public E remove ()
   ```
@@ -2068,14 +2278,53 @@ Collection接口虽然是集合的最大接口，但是如果直接使用Collect
   ```java
   //在链表开头增加元素
   public void addFirst(E o)
+
   //在链表结尾增加元素
   public void addLast(E o)
+
   //将指定元素增加到链表的结尾
   public boolean offer(E o)
+
   //删除链表的第一个元素
   public E removeFirst()
+
   //删除链表的最后一个元素
   public E removeLast()
+  ```
+
+* 实例：
+  ```java
+  //在链表的开头和结尾增加数据 
+  import java.util.LinkedList;
+  public class LinkedListDemo01 {
+	  public static void main(String[] args) {
+		  LinkedList<String> link = new LinkedList<String>();
+		  link.add("A"); 				// 向链表中增加数据
+		  link.add("B"); 				// 向链表中增加数据
+		  link.add("C"); 				// 向链表中增加数据
+		  System.out.println("初始化链表：" + link);	// 输出链表内容，调用toString()
+		  link.addFirst("X");			// 在链表的表头增加内容
+		  link.addLast("Y");			// 在链表的表尾增加内容
+		  System.out.println("增加头和尾之后的链表：" + link);	// 输出链表内容，调用toString()
+	  }
+  }
+
+  //找到链表头
+  import java.util.LinkedList;
+  public class LinkedListDemo02 {
+	  public static void main(String[] args) {
+		  LinkedList<String> link = new LinkedList<String>();
+		  link.add("A"); 					// 向链表中增加数据
+		  link.add("B"); 					// 向链表中增加数据
+		  link.add("C"); 					// 向链表中增加数据
+		  System.out.println("1-1、element()方法找到表头：" + link.element());
+		  System.out.println("1-2、找完之后的链表内容：" + link);
+		  System.out.println("2-1、peek()方法找到表头：" + link.peek());
+		  System.out.println("2-2、找完之后的链表内容：" + link);
+		  System.out.println("3-1、poll()方法找到表头：" + link.poll());
+		  System.out.println("3-2、找完之后的链表内容：" + link);
+	  }
+  }
   ```
 
 #### Set 接口
@@ -2097,6 +2346,25 @@ Collection接口虽然是集合的最大接口，但是如果直接使用Collect
 
 HashSet 是 Set 接口的一个子类，主要的特点是：里面不能存放重复元素，而且是采用散列的存储方式，所以是没有顺序的。
 
+```java
+//验证HashSet类 
+import java.util.HashSet;
+import java.util.Set;
+public class HashSetDemo01 {
+	public static void main(String[] args) {
+		Set<String> allSet = new HashSet<String>();
+		allSet.add("A") ;				// 增加元素
+		allSet.add("B") ;				// 增加元素
+		allSet.add("C") ;				// 增加元素
+		allSet.add("C") ;				// 重复元素，不能加入
+		allSet.add("C") ;				// 重复元素，不能加入
+		allSet.add("D") ;				// 增加元素
+		allSet.add("E") ;				// 增加元素
+		System.out.println(allSet) ;		// 输出集合对象，调用toString()
+	}
+}
+```
+
 #### Iterator 接口
 
 ##### 集合的输出 
@@ -2110,33 +2378,93 @@ HashSet 是 Set 接口的一个子类，主要的特点是：里面不能存放�
 
 * 集合输出的标准操作：
 
-  “在使用集合输出的时候必须形成以下的一个思路：‘只要是碰到了集合输出的操作，就一定使用Iterator接口’，因为这是最标准的做法” 
+  >“在使用集合输出的时候必须形成以下的一个思路：‘只要是碰到了集合输出的操作，就一定使用Iterator接口’，因为这是最标准的做法” 
 
 * Iterator接口的操作原理：
 
-  Iterator是专门的迭代输出接口，所谓的迭代输出就是将元素一个个进行判断，判断其是否有内容，如果有内容则把内容取出 。
+  >Iterator是专门的迭代输出接口，所谓的迭代输出就是将元素一个个进行判断，判断其是否有内容，如果有内容则把内容取出 。
 
 ##### Iterator接口中的常用方法
 
 ```java
 //判断是否有下一个值
 public boolean hasNext()
+
 //取出当前元素
 public E next()
+
 //移除当前元素
 public void remove()
 ```
 
+##### 实例
+```java
+//输出Collection中的全部内容
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+public class IteratorDemo01 {
+	public static void main(String[] args) {
+		List<String> all = new ArrayList<String>();// 实例化List接口
+		all.add("hello"); 			// 增加元素
+		all.add("_"); 				// 增加元素
+		all.add("world"); 			// 增加元素
+		Iterator<String> iter = all.iterator();	// 直接实例化Iterator接口S
+		while (iter.hasNext()) {			// 依次判断
+			System.out.print(iter.next() + "、");// 输出内容
+		}
+	}
+}
+
+//使用Iterator删除指定内容 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+public class IteratorDemo02 {
+	public static void main(String[] args) {
+		List<String> all = new ArrayList<String>(); // 实例化List接口
+		all.add("hello"); 			// 增加元素
+		all.add("_"); 				// 增加元素
+		all.add("world"); 			// 增加元素
+		Iterator<String> iter = all.iterator();	// 直接实例化Iterator接口S
+		while (iter.hasNext()) {			/ 依次输出
+			String str = iter.next();		// 取出内容
+			if ("_".equals(str)) {		// 判断内容是否是“_”
+				iter.remove(); 		// 删除当前元素
+			} else {
+				System.out.print(str + "、");// 输出元素内容
+			}
+		}
+		System.out.println("\n删除之后的集合：" + all);	// 输出集合内容，调用toString()方法
+	}}
+  ```
+
 #### foreach
 
-foreach 是 JDK 1.5 的新支持，本身除了可以输出数组外还对集合的输出有所支持：
+* foreach 是 JDK 1.5 的新支持，本身除了可以输出数组外还对集合的输出有所支持：
 
-```java
-//foreach的使用格式
-for(类 对象 : 集合){
-		// 集合操作
-	}
-```
+* foreach的使用格式
+  ```java
+  for(类 对象 : 集合){
+		  // 集合操作
+	  }
+  ```
+* 使用foreach输出 
+  ```java
+  import java.util.ArrayList;
+  import java.util.List;
+  public class ForeachDemo01 {
+	  public static void main(String[] args) {
+		  List<String> all = new ArrayList<String>(); 	// 实例化List接口
+		  all.add("hello"); 				// 增加元素
+		  all.add("_"); 					// 增加元素
+		  all.add("world"); 				// 增加元素
+		  for (String str : all) {				// 输出foreach输出
+			  System.out.print(str + "、");		// 输出内容
+		  }
+	  }
+  }
+  ````
 
 #### Map接口
 
@@ -2155,30 +2483,43 @@ for(类 对象 : 集合){
 ```java
 //清空Map集合
 public void clear()
+
 //判断指定的key是否存在
 public boolean containsKey(Object key)
+
 //判断指定的value是否存在
 public boolean containsValue(Object value)
+
 //将Map对象变为Set集合
 public Set<Map.Entry<K,V>> entrySet()
+
 //对象比较
 public boolean equals(Object o)
+
 //根据key取得value
 public V get(Object key)
+
 //返回哈希码
 public int hashCode()
+
 //判断集合是否为空
 public boolean isEmpty()
+
 //取得所有的key
 public Set<K> keySet()
+
 //向集合中加入元素
 public V put(K key, V value)
+
 //将一个Map集合中的内容加入到另一个Map
 public void putAll(Map<? extends K,? extends V> t)
+
 //根据key删除value
 public V remove(Object key)
+
 //取出集合的长度
 public int size()
+
 //取出全部的value
 public Collection<V> values()
 ```
@@ -2191,6 +2532,91 @@ public Collection<V> values()
 
   > public class HashMap<K,V>extends AbstractMap<K,V>implements
   > Map<K,V>, Cloneable, Serializable
+
+* 实例：
+  ```java
+  //向集合中增加和取出内容 
+  import java.util.HashMap;
+  import java.util.Map;
+  public class HashMapDemo01 {
+	  public static void main(String[] args) {
+		  Map<String, String> map = null;		// 声明Map对象，
+		  map = new HashMap<String, String>();	// key和value是String类
+		  map.put("mldn", "www.mldn.cn");			// 增加内容
+		  map.put("zhinangtuan", "www.zhinangtuan.net.cn");	// 增加内容
+		  map.put("mldnjava", "www.mldnjava.com.cn");	// 增加内容
+		  String val = map.get("mldn");			// 根据key求出value
+		  System.out.println("取出的内容是:" + val);	// 输出Map，调用toString()
+	  }
+  }
+
+  //判断指定的key或value是否存在 
+  import java.util.HashMap;
+  import java.util.Map;
+  public class HashMapDemo02 {
+	public static void main(String[] args) {
+		Map<String, String> map = null;			// 声明Map对象，
+		map = new HashMap<String, String>();	// key和value是String类
+		map.put("mldn", "www.mldn.cn");			// 增加内容
+		map.put("zhinangtuan", "www.zhinangtuan.net.cn");	// 增加内容
+		map.put("mldnjava", "www.mldnjava.com.cn");	// 增加内容
+		if (map.containsKey("mldn")) {		// 查找指定的key是否存在
+			System.out.println("搜索的key存在！");
+		} else {
+			System.out.println("搜索的key不存在！");
+		}
+		if(map.containsValue("www.mldn.cn")){	// 查找指定的value是否存在
+			System.out.println("搜索的value存在！");
+		}else{
+			System.out.println("搜索的value不存在!");
+		}
+	}
+  }
+
+  //输出全部的key 
+  import java.util.HashMap;
+  import java.util.Iterator;
+  import java.util.Map;
+  import java.util.Set;
+  public class HashMapDemo03 {
+	  public static void main(String[] args) {
+		  Map<String, String> map = null;		// 声明Map对象，
+		  map = new HashMap<String, String>();	// key和value是String类
+		  map.put("mldn", "www.mldn.cn");		// 增加内容
+		  map.put("zhinangtuan", "www.zhinangtuan.net.cn");	// 增加内容
+		  map.put("mldnjava", "www.mldnjava.com.cn");	// 增加内容
+		  Set<String> keys = map.keySet();			// 得到全部的key
+		  Iterator<String> iter = keys.iterator();		// 实例化Iterator
+		  System.out.print("全部的key：");			// 输出信息
+		  while (iter.hasNext()) {				// 迭代输出全部的key
+			  String str = iter.next();			// 取出集合的key
+			  System.out.print(str + "、");		// 输出内容
+		  }
+	  }
+  }
+
+  //输出全部的value 
+  import java.util.Collection;
+  import java.util.HashMap;
+  import java.util.Iterator;
+  import java.util.Map;
+  public class HashMapDemo04 {
+	  public static void main(String[] args) {
+		  Map<String, String> map = null;		// 声明Map对象，
+		  map = new HashMap<String, String>();	// key和value是String类
+		  map.put("mldn", "www.mldn.cn");			// 增加内容
+		  map.put("zhinangtuan", "www.zhinangtuan.net.cn");	// 增加内容
+		  map.put("mldnjava", "www.mldnjava.com.cn");	// 增加内容
+		  Collection<String> values = map.values();		// 得到全部的value
+		  Iterator<String> iter = values.iterator();		// 实例化Iterator
+		  System.out.print("全部的value：");			// 输出信息
+		  while (iter.hasNext()) {				// 迭代输出
+			  String str = iter.next();			// 取出value
+			  System.out.print(str + "、");		// 输出内容
+		  }
+	  }
+  }
+    ```
 
 ### IO
 
@@ -2205,26 +2631,37 @@ public Collection<V> values()
 ```java
 //表示路径的分隔符（windows是：“;”）
 public static final String pathSeparator
+
 //表示路径的分隔符（windows是：“\”）
 public static final String separator
+
 //构造函数，创建File类对象，传入完整路径
 public File(String pathname)
+
 //创建新文件
 public boolean createNewFile() throws IOException
+
 //删除文件
 public boolean delete()
+
 //判断文件是否存在
 public boolean exists()
+
 //判断给定的路径是否是一个目录
 public boolean isDirectory()
+
 //返回文件的大小
 public long length()
+
 //列出指定目录的全部内容，只是列出了名称
 public String[] list()
+
 //列出指定目录的全部内容，会列出路径
 public File[] listFiles()
+
 //创建一个目录
 public boolean mkdir()
+
 //为已有的文件重新命名
 public boolean renameTo(File dest)
 ```
@@ -2246,7 +2683,7 @@ public class FileDemo01 {
 	}
 }
 
-//创建一个新文件（可移植版）
+//创建一个新文件（改）
 import java.io.File;
 import java.io.IOException;
 public class FileDemo03 {
@@ -2262,7 +2699,7 @@ public class FileDemo03 {
 }
 ```
 
-###### 程序的问题
+###### 上述程序的问题
 
 * 在不同的操作系统中，路径的分隔符表示是不一样的，例如：
   * wndows 中使用反斜杆表示目录的分隔符：“\” ；
@@ -2380,22 +2817,31 @@ public class FileDemo10 {
 ```java
 //构造函数，接收File类的对象，指定操作路径，但是在设置时需要设置模式，“r”：只读、“w”：只写、“rw”：读写
 public RandomAccessFile(File file,String mode) throws FileNotFoundException
+
 //构造函数，不再使用File类对象表示文件，而是直接输入了一个固定的文件路径
 public RandomAccessFile(String name,String mode) throws FileNotFoundException
+
 //关闭操作
 public void close() throws IOException
+
 //将内容读取到一个byte数组之中
 public int read(byte[] b) throws IOException
+
 //读取一个字节
 public final byte readByte() throws IOException
+j
 //从文件中读取整型数据
 public final int readInt() throws IOException
+
 //设置读指针的位置
 public void seek(long pos) throws IOException
+
 //将一个字符串写入到文件之中，按字节的方式处理。
 public final void writeBytes(String s) throws IOException
+
 //将一个int型数据写入文件，长度为4位
 public final void writeInt(int v) throws IOException
+
 //指针跳过多少个字节
 public int skipBytes(int n) throws IOException
 ```
@@ -2425,12 +2871,16 @@ public int skipBytes(int n) throws IOException
   ```java
   //关闭输出流
   public void close() throws IOException
+
   //刷新缓冲区
   public void flush() throws IOException
+
   //将一个byte数组写入数据流
   public void write(byte[] b) throws IOException
+
   //将一个指定范围的byte数组写入数据流
   public void write(byte[] b,int off,int len) throws IOException
+
   //将一个字节数据写入数据流
   public abstract void write(int b) throws IOException
   ```
@@ -2460,6 +2910,28 @@ public int skipBytes(int n) throws IOException
   		// 第4步：关闭输出流
   		out.close(); 				// 关闭输出流
   	}
+  }
+
+  //使用write(int t)的方式写入文件内容 
+  import java.io.File;
+  import java.io.FileOutputStream;
+  import java.io.OutputStream;
+  public class OutputStreamDemo02 {
+	  public static void main(String[] args) throws Exception { // 异常抛出，不处理
+		  // 第1步、使用File类找到一个文件
+		  File f = new File("d:" + File.separator + "test.txt"); // 声明File对象
+		  // 第2步：通过子类实例化父类对象
+		  OutputStream out = null; 			// 准备好一个输出的对象
+		  out = new FileOutputStream(f); 		// 通过对象多态性，进行实例化
+		  // 第3步：进行写操作
+		  String str = "Hello World!!!"; 		// 准备一个字符串
+		  byte b[] = str.getBytes(); // 只能输出byte数组，所以将字符串变为byte数组
+		  for (int i = 0; i < b.length; i++) {
+			  out.write(b[i]); 			// 将内容输出
+		  }
+		  // 第4步：关闭输出流
+		  out.close();				// 关闭输出流
+	  }
   }
   ```
 
@@ -2511,10 +2983,13 @@ public int skipBytes(int n) throws IOException
   ```java
   //可以取得输入文件的大小
   public int available() throws IOException
+
   //关闭输入流
   public void close() throws IOException
+
   //读取内容，以数字的方式读取
   public abstract int read() throws IOException
+
   //将内容读到byte数组之中，同时返回读入的个数
   public int read(byte[] b) throws IOException
   ```
@@ -2565,10 +3040,13 @@ public int skipBytes(int n) throws IOException
   ```java
   //关闭输出流
   public abstract void close() throws IOException
+
   //将字符串输出
   public void write(String str) throws IOException
+
   //将字符数组输出
   public void write(char[] cbuf) throws IOException
+
   //强制性清空缓存
   public abstract void flush() throws IOException
   ```
@@ -2576,6 +3054,7 @@ public int skipBytes(int n) throws IOException
 * 实例：
 
   ```java
+  //向文件中写入数据 
   import java.io.File;
   import java.io.FileWriter;
   import java.io.Writer;
@@ -2642,8 +3121,10 @@ public int skipBytes(int n) throws IOException
   ```java
   //关闭输出流
   public abstract void close() throws IOException
+
   //读取单个字符
   public int read() throws IOException
+
   //将内容读到字符数组之中，返回读入的长度
   public int read(char[] cbuf) throws IOException
   ```
@@ -2726,34 +3207,69 @@ public class InputStreamReaderDemo01 {
 
 #### System对IO的支持
 
-##### System类
+##### System 类
 
 System类是一些与系统相关的属性和方法的集合，而且在System类中所有的属性都是静态的，要想引用这些属性和方法，直接使用System类调用即可：
 
 ```java
 //系统退出
 public static void exit(int status)
+
 //运行垃圾收集机制，调用的是Runtime类中的gc方法
 public static void gc()
+
 //返回以毫秒为单位的当前时间
 public static long currentTimeMillis()
+
 //数组拷贝操作
 public static void arraycopy(Object src,int srcPos,Object dest,int destPos,int length)
+
 //取得当前的系统全部属性
 public static Properties getProperties()
+
 //根据键值取得属性的具体内容
 public static String getProperty(String key)
 ```
+* System 类应用：
+  ```java
+  //计算一个程序的执行时间
+  public class SystemDemo01 {
+	public static void main(String[] args) {
+		long startTime = System.currentTimeMillis();// 取得开始计算之前的时间
+		int sum = 0;									// 声明变量存放累加后的结果
+		for (int i = 0; i < 30000000; i++) { 	// 执行累加操作
+			sum += i;
+		}
+		long endTime = System.currentTimeMillis();
+		// 开始时间减去结束时间
+		System.out.println("计算所花费的时间：" + (endTime - startTime)+"毫秒");
+	}
+  }
 
-###### System类的常量
+  //列出指定属性
+  public class SystemDemo03 {
+	public static void main(String[] args) {
+		System.out.println("系统版本为:" + System.getProperty("os.name")
+				+ System.getProperty("os.version")
+				+ System.getProperty("os.arch"));	// 获取当前系统版本
+		System.out.println("系统用户为:" + System.getProperty("user.name"));
+		System.out.println("当前用目录:" + System.getProperty("user.home"));
+		System.out.println("当前用户工作目录:" + System.getProperty("user.dir"));
+	}
+  }
+  ```
+
+###### System 类的常量
 
 System表示系统类，此类在之前讲解JAVA常用类库的时候就已经为读者介绍过了，实际上在java中System类也对IO给予了一定的支持：
 
 ```java
 //对应系统标准输出，一般是显示器
 public static final PrintStream out
+
 //错误信息输出
 public static final PrintStream.err
+
 //对应着标准输入，一般是键盘
 public static final InputStream in
 ```
@@ -2761,10 +3277,43 @@ public static final InputStream in
 ###### System.out 
 
 System.out是PrintStream的对象，在PrintStream中定义了一系列的print()和println()方法，所以之前使用的“System.out.print()”或“System.out.println()”语句调用的实际上就是PrintStream类的方法。
+```java
+//使用OutputStream向屏幕上输出 
+import java.io.IOException;
+import java.io.OutputStream;
+public class SystemDemo01 {
+	public static void main(String[] args) {
+		OutputStream out = System.out ;		// 此时的输出流是向屏幕上输出
+		try {
+			out.write("hello world!!!".getBytes()) ;	// 向屏幕上输出
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		try {
+			out.close() ;				// 关闭输出流
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+}
+```
 
 ###### System.err 
 
 System.err表示的是错误信息输出，如果程序出现错误，则可以直接使用System.err进行打印。
+```java
+//打印错误信息
+public class SystemDemo02 {
+	public static void main(String[] args) {
+		String str = "hello" ;		// 声明一个非数字的字符串
+		try {
+			System.out.println(Integer.parseInt(str)) ;
+		} catch (Exception e) {
+			System.err.println(e);
+		}
+	}
+}
+```
 
 ###### System.in
 
@@ -2792,11 +3341,79 @@ public class SystemDemo04 {
 ```java
 //重定向“标准”输出流
 public static void setOut(PrintStream out)
+
 //重定向“标准”错误输出流
 public static void setErr(PrintStream err)
+j
 //重定向“标准”输入流
 public static void setIn(InputStream in)
 ```
+* 实例：
+  ```java
+  //为System.out输出重定向 
+  import java.io.File;
+  import java.io.FileOutputStream;
+  import java.io.PrintStream;
+  public class SystemDemo06 {
+	  public static void main(String[] args) throws Exception { // 所有异常抛出
+		  System.setOut(new PrintStream(new FileOutputStream("d:"
+				  + File.separator + "red.txt"))); // System.out输出重定向
+		  System.out.print("www.mldnjava.cn") ;	// 输出时，不再向屏幕上输出 
+		  System.out.println("，李兴华") ;		// 而是向指定的重定向位置输出
+	  }
+  }
+
+  //为用户保存错误信息 
+  import java.io.File;
+  import java.io.FileNotFoundException;
+  import java.io.FileOutputStream;
+  import java.io.PrintStream;
+  public class SystemDemo07 {
+	  public static void main(String[] args) {
+		  String str = "hello"; 			// 声明一个非数字的字符串
+		  try {
+			  System.out.println(Integer.parseInt(str));
+		  } catch (Exception e) {
+			  try {
+				  System.setOut(new PrintStream(new FileOutputStream("d:"+ File.separator + "err.log")));// 输出重定位
+			  } catch (FileNotFoundException e1) {
+				  e1.printStackTrace();
+			  }
+			  System.out.println(e) ;		// 输出错误，保存文件之中
+		  }
+	  }
+  }
+
+  //为System.err输出重定向 
+  import java.io.ByteArrayOutputStream;
+  import java.io.PrintStream;
+  public class SystemDemo08 {
+	  public static void main(String[] args) throws Exception { // 所有异常抛出
+		  ByteArrayOutputStream bos = null ;			// 定义内存输出流
+		  bos = new ByteArrayOutputStream() ;		// 实例化内存输出流
+		  System.setErr(new PrintStream(bos)); 	// System.err输出重定向
+		  System.err.print("www.mldnjava.cn") ;	// 错误输出时，不再向屏幕上输出 
+		  System.err.println("，李兴华") ;		// 而是向内存的位置输出
+		  System.out.println(bos);			// 打印错误信息
+	  }
+  }
+
+  //设置System.in的输入重定向 
+  import java.io.File;
+  import java.io.FileInputStream;
+  import java.io.InputStream;
+  public class SystemDemo09 {
+	  public static void main(String[] args) throws Exception { // 所有异常抛出
+		  System.setIn(new FileInputStream("d:" 
+				  + File.separator + "demo.txt"));	// 设置输入重定向
+		  InputStream input = System.in;			// 从文件接收数据 
+		  byte b[] = new byte[1024];			// 开辟空间，接收数据
+		  int len = input.read(b);				// 接收数据
+		  System.out.println("输入的内容为：" + new String(b, 0, len));
+		  input.close();					// 关闭输入流
+	  }
+  }
+  ```
 
 #### BufferedReader
 
@@ -2807,13 +3424,14 @@ BufferedReader是从缓冲区之中读取内容，所有的输入的字节数据
 ```java
 //构造函数，接收一个Reader类的实例
 public BufferedReader(Reader in)
+
 //一次性从缓冲区中将内容全部读取进来
 public String readLine() throws IOException
 ```
 
 ##### BufferedReader实例化
 
-![](.\Pictures\Java2.png)
+![](./Pictures/Java2.png)
 
 ##### 实例
 
@@ -2847,22 +3465,31 @@ public class BufferedReaderDemo01 {
 ```java
 //构造函数，从文件中接收内容
 public Scanner(File source) throws FileNotFoundException
+
 //构造函数，从指定的字节输入流中接收内容
 public Scanner(InputStream source)
+
 //判断输入的数据是否符合指定的正则标准
 public boolean hasNext(Pattern pattern)
+
 //判断输入的是否是整数
 public boolean hasNextInt()
+j
 //判断输入的是否是小数
 public boolean hasNextFloat()
+
 //接收内容
 public String next()
+
 //接收内容，进行正则验证
 public String next(Pattern pattern)
+
 //接收数字
 public int nextInt()
+
 //接收小数
 public float nextFloat()
+
 //设置读取的分隔符
 public Scanner useDelimiter(String pattern)
 ```
@@ -2961,12 +3588,16 @@ scan.useDelimiter("\n");
 ```java
 //构造函数，实例化对象
 public DataOutputStream(OutputStream out)
+
 //将一个int值以4-byte值形式写入基础输出流中
 public final void writeInt(int v) throws IOException
+
 //写入一个double类型，该值以8-byte值形式写入基础输出流中
 public final void writeDouble(double v) throws IOException
+
 //将一个字符串写入到输出流之中
 public final void writeChars(String s) throws IOException
+
 //将一个字符写入到输出流之中
 public final void writeChar(int v) throws IOException
 ```
@@ -2984,10 +3615,13 @@ public final void writeChar(int v) throws IOException
 ```java
 //构造函数，实例化对象
 public DataInputStream(InputStream in)
+
 //从输入流中读取整数
 public final int readInt() throws IOException
+
 //从输入流中读取小数
 public final float readFloat() throws IOException
+
 //从输入流中读取一个字符
 public final char readChar() throws IOException
 ```
@@ -3024,12 +3658,29 @@ public class CharSetDemo01 {
 
   > public interface Serializable{}
 
+* 实例：
+  ```java
+  //定义可序列化的类 
+  import java.io.Serializable;
+  public class Person implements Serializable { 	// 此类的对象可以被序列化
+	  private String name;				// 声明name属性
+	  private int age;				// 声明age属性
+	  public Person(String name, int age) {		// 通过构造方法设置属性内容
+		  this.name = name;
+		  this.age = age;
+	  }
+	  public String toString() {			// 覆写toString()方法
+		  return "姓名：" + this.name + "；年龄：" + this.age;
+	  }
+  }
+  ```
+
 ##### 对象的序列化和反序列化
 
 * 要想完成对象的输入或输出，还必须依靠对象输出流（ObjectOutputStream）和对象输入流（ObjectInputStream）
 * 使用对象输出流输出序列化对象的步骤，有时也称为序列化，而使用对象输入流读入对象的过程，有时也称为反序列化
 
-##### *serialVersionUID* 
+##### serialVersionUID 
 
 序列化时为了保持版本的兼容性，即在版本升级时反序列化仍保持对象的唯一性。有两种生成方式：
 
@@ -3047,16 +3698,36 @@ public class CharSetDemo01 {
 
   > public class ObjectOutputStreamextends OutputStream implements ObjectOutput, ObjectStreamConstants
 
-- 此类的常用方法如下：
+* 此类的常用方法如下：
 
   ```java
   //构造函数，传入输出的对象
   public ObjectOutputStream(OutputStream out) throws IOException
+
   //输出对象
   public final void writeObject(Object obj) throws IOException
   ```
 
-- 此类的使用形式与 PrintStream 非常的相似，在实例化时也需要传入一个 OutputStream 的子类对象，之后根据传入的 OutputStream 子类的对象不同，输出的位置也不同。 
+* 此类的使用形式与 PrintStream 非常的相似，在实例化时也需要传入一个 OutputStream 的子类对象，之后根据传入的 OutputStream 子类的对象不同，输出的位置也不同。 
+
+* 实例：
+  ```java
+  //将Person类的对象保存在文件之中 
+  import java.io.File;
+  import java.io.FileOutputStream;
+  import java.io.ObjectOutputStream;
+  import java.io.OutputStream;
+  public class SerDemo01 {
+	public static void main(String[] args) throws Exception {
+		File f = new File("D:" + File.separator + "test.txt");
+		ObjectOutputStream oos = null;
+		OutputStream out = new FileOutputStream(f);	// 文件输出流
+		oos = new ObjectOutputStream(out); 		// 为对象输出流实例化
+		oos.writeObject(new Person("张三", 30));		// 保存对象到文件
+		oos.close(); 					// 关闭输出
+	}
+  }
+  ```
 
 ##### 对象输入流：ObjectInputStream 
 
@@ -3064,16 +3735,37 @@ public class CharSetDemo01 {
 
   > public class ObjectInputStream extends InputStream implements ObjectInput, ObjectStreamConstants
 
-- 此类的常用方法如下：
+* 此类的常用方法如下：
 
   ```java
   //构造函数，构造输入对象
   public ObjectInputStream(InputStream in) throws IOException
+
   //从指定位置读取对象
   public final Object readObject() throws IOException, ClassNotFoundException
   ```
 
-- 此类也是InputStream的子类，与PrintStream类的使用类似，此类同样需要接收InputStream类的实例才可以实例化。 
+* 此类也是InputStream的子类，与PrintStream类的使用类似，此类同样需要接收InputStream类的实例才可以实例化。 
+
+* 实例：
+  ```java
+  //从文件中将Person对象反序列化 
+  import java.io.File;
+  import java.io.FileInputStream;
+  import java.io.InputStream;
+  import java.io.ObjectInputStream;
+  public class SerDemo02 {
+	public static void main(String[] args) throws Exception {
+		File f = new File("D:" + File.separator + "test.txt");
+		ObjectInputStream ois = null;
+		InputStream input = new FileInputStream(f);	// 文件输入流
+		ois = new ObjectInputStream(input); 		// 为对象输出流实例化
+		Object obj = ois.readObject(); 			// 读取对象
+		ois.close();					// 关闭输出
+		System.out.println(obj);
+	}
+  }
+  ```
 
 ##### Externalizable接口 
 
@@ -3085,13 +3777,81 @@ public interface Externalizable extends Serializable {
 		public void readExternal(ObjectInput in) throws IOException,ClassNotFoundException ;}
 ```
 
+* 实例：
+  ```java
+  //修改Person类并实现Externalizable接口 
+  public class Person implements Externalizable { 	// 此类的对象可以被序列化
+	private String name;				// 声明name属性
+	private int age;				// 声明age属性
+	public Person(){}				// 必须定义无参构造
+	public Person(String name, int age) {		// 通过构造方法设置属性内容
+		this.name = name;
+		this.age = age;
+	}
+	public String toString() {			// 覆写toString()方法
+		return "姓名：" + this.name + "；年龄：" + this.age;
+	}
+	// 覆写此方法，根据需要，读取内容，反序列化时使用
+	public void readExternal(ObjectInput in) throws IOException,
+			ClassNotFoundException {
+		this.name = (String)in.readObject() ;		// 读取姓名属性
+		this.age = in.readInt() ;			// 读取年龄
+	}
+	// 覆写此方法，根据需要，可以保存属性或具体内容，序列化时使用
+	public void writeExternal(ObjectOutput out) throws IOException {
+		out.writeObject(this.name) ;		// 保存姓名属性
+		out.writeInt(this.age) ;			// 保存年龄属性
+	}
+  }
+
+  //序列化和反序列化Person对象 
+  public class SerDemo03 {
+	public static void main(String[] args) throws Exception {
+		ser();					// 序列化
+		dser();					// 反序列化
+	}
+	public static void ser() throws Exception {		// 序列化操作
+		File f = new File("D:" + File.separator + "test.txt");
+		ObjectOutputStream oos = null;
+		OutputStream out = new FileOutputStream(f);	// 文件输出流
+		oos = new ObjectOutputStream(out); 		// 为对象输出流实例化
+		oos.writeObject(new Person("张三", 30));		// 保存对象到文件
+		oos.close(); 				// 关闭输出
+	}
+	public static void dser() throws Exception {		// 反序列化操作
+		File f = new File("D:" + File.separator + "test.txt");
+		ObjectInputStream ois = null;
+		InputStream input = new FileInputStream(f);	// 文件输出流
+		ois = new ObjectInputStream(input); 		// 为对象输出流实例化
+		Object obj = ois.readObject(); 		// 读取对象
+		ois.close(); 				// 关闭输出
+		System.out.println(obj);
+	}
+  }
+  ```
+
 ##### Externalizable接口与Serializable接口实现序列化的区别 
 
-![](.\Pictures\Java3.png)
+![](./Pictures/Java3.png)
 
 ##### transient关键字
 
-当使用Serializable接口实现序列化操作时，如果一个对象中的某个属性不希望被序列化的话，则可以使用transient关键字进行声明 
+当使用Serializable接口实现序列化操作时，如果一个对象中的某个属性不希望被序列化的话，则可以使用transient关键字进行声明：
+```java
+//Person中的name属性不希望被序列化 
+import java.io.Serializable;
+public class Person implements Serializable { 	// 此类的对象可以被序列化
+	private transient String name;			// 此属性将不被序列化
+	private int age;				// 此属性将被序列化
+	public Person(String name, int age) {
+		this.name = name;
+		this.age = age;
+	}
+	public String toString() {			// 覆盖toString()，输出信息
+		return "姓名：" + this.name + "；年龄：" + this.age;
+	}
+}
+```
 
 ### 多线程
 
@@ -3143,6 +3903,7 @@ public interface Externalizable extends Serializable {
   	}
   };
   
+  //启动线程
   //如果要想正确的启动线程，是不能直接调用run()方法的，应该调用从Thread类中继承而来的start()方法，才可以启动线程。
   //mt1.start();			// 启动多线程
   //mt2.start();			// 启动多线程
@@ -3195,6 +3956,7 @@ public interface Externalizable extends Serializable {
   	}
   };
   
+  //启动Runnable实现的多线程
   //以上的代码是通过实现Runnable接口实现的多线程，但是这样一来就会有新的问题产生了，从之前的代码中可以清楚的知道，要想启动一个多线程必须要使用start()方法完成，如果继承了Thread类，则可以直接从Thread类中使用start()方法，但是现在实现的是Runnable接口，那么该如何启动多线程呢？实际上此时，还是要依靠Thread类完成启动，在Thread类中提供了以下的两个构造方法：
   //public Thread(Runnable target)
   //public Thread(Runnable target,String name)
@@ -3251,7 +4013,34 @@ public interface Externalizable extends Serializable {
 
 ##### Thread类和Runnable接口的区别
 
-实际上Thread类和Runnable接口之间在使用上也是有所区别的，如果一个类继承Thread类，则不适合于多个线程共享资源，而实现了Runnable接口，则可以方便的实现资源的共享。 
+实际上Thread类和Runnable接口之间在使用上也是有所区别的，如果一个类继承Thread类，则不适合于多个线程共享资源，而实现了Runnable接口，则可以方便的实现资源的共享：
+
+```java
+// 实现Runnable接口可以资源共享 
+  class MyThread implements Runnable{		// 实现Runnable接口
+	  private int ticket = 5 ;			// 一共5张票
+	  public void run(){				// 覆写run()方法
+		  for(int i=0;i<100;i++){			// 超出票数的循环
+			  if(ticket>0){			// 判断是否有剩余票
+				  System.out.println("卖票：ticket = " + ticket--) ;
+			  }
+		  }
+	  }
+  };
+  public class RunnableDemo02 {
+	  public static void main(String args[]) {
+		  MyThread my = new MyThread() ;
+		  new Thread(my).start() ;			// 启动三个线程
+		  new Thread(my).start() ;			// 启动三个线程
+		  new Thread(my).start() ;			// 启动三个线程
+	  }
+  };
+  ```
+
+##### 总结
+可见，实现Runnable接口相对于继承Thread类来说，有如下显著的优势：
+* 适合多个相同程序代码的线程去处理同一资源的情况。
+* 可以避免由于Java的单继承特性带来的局限。
 
 #### 线程常用操作方法
 
@@ -3260,38 +4049,55 @@ public interface Externalizable extends Serializable {
 ```java
 //构造函数，接收Runnable接口子类对象，实例化Thread对象
 public Thread(Runnable target)
+
 //构造函数，接收Runnable接口子类对象，实例化Thread对象，并设置线程名称
 public Thread(Runnable target,String name)
+
 //构造函数，实例化Thread对象，并设置线程名称
 public Thread(String name)
+
 //返回目前正在执行的线程
 public static Thread currentThread()
+
 //返回线程的名称
 public final String getName()
+
 //发挥线程的优先级
 public final int getPriority()
+
 //判断目前线程是否被中断，如果是，返回true，否则返回false
 public boolean isInterrupted()
+
 //判断线程是否在活动，如果是，返回true，否则返回false
 public final boolean isAlive()
+
 //等待线程死亡
 public final void join() throws InterruptedException
+
 //等待millis毫秒后，线程死亡
 public final synchronized void join(long millis) throws InterruptedException
+
 //执行线程
 public void run()
+
 //设定线程名称
 public final void setName(String name)
+
 //设定线程的优先值
 public final void setPriority(int newPriority)
+
 //使目前正在执行的线程休眠millis毫秒
 public static void sleep(long millis) throws InterruptedException
+
 //开始执行线程
 public void start()
+
 //将目前正在执行的线程暂停，允许其它线程执行
 public static void yield()
+
 //将一个线程设置成后台运行
 public final void setDaemon(boolean on)
+
 //更改线程的优先级
 public final void setPriority(int newPriority)
 ```
@@ -3301,26 +4107,174 @@ public final void setPriority(int newPriority)
 * 在Thread类中，可以通过getName()方法取得线程的名称，通过setName()方法设置线程的名称。
 * 线程的名称一般在启动线程前设置，但也允许为已经运行的线程设置名称。允许两个Thread对象有相同的名字，但为了清晰，应该尽量避免这种情况的发生。
 * 另外，如果程序并没有为线程指定名称，则系统会自动的为线程分配一个名称。
+* 实例：
+  ```java
+  //设置和取得线程的名字 
+  class MyThread implements Runnable{		// 实现Runnable接口
+	public void run(){				// 覆写接口中的run()方法
+		for(int i=0;i<3;i++){			// 循环输出3次
+			System.out.println(Thread.currentThread().getName()
+					+ "运行， i = " + i) ;					// 取得当前线程的名字
+		}
+	}
+  };
+  public class ThreadNameDemo {
+	  public static void main(String args[]) {
+		  MyThread my = new MyThread() ;		// 定义Runnable子类对象
+		  new Thread(my).start() ;			// 系统自动设置线程名称
+		  new Thread(my,"线程-A").start() ;		// 手工设置线程名称
+		  new Thread(my,"线程-B").start() ;		// 手工设置线程名称
+		  new Thread(my).start() ;			// 系统自动设置线程名称
+		  new Thread(my).start() ;			// 系统自动设置线程名称
+	  }
+  };
+
+  //程序说明
+  //从运行结果中发现没有设置线程名称的其余三个线程对象的名字都是很有规律的：Thread-0、Thread-1、Thread-2，从之前讲解的static关键字可以知道，在Thread类中必然存在一个static类型的属性，用于为线程自动命名。 
+  ```
 
 ##### 判断线程是否启动 
 
-通过Thread类之中的start()方法通知CPU这个线程已经准备好启动，之后就等待分配CPU资源，运行此线程了。那么如何判断一个线程是否已经启动了呢？在Java中可以使用isAlive()方法来测试线程是否已经启动而且仍然在启动。
+通过Thread类之中的start()方法通知CPU这个线程已经准备好启动，之后就等待分配CPU资源，运行此线程了。那么如何判断一个线程是否已经启动了呢？在Java中可以使用isAlive()方法来测试线程是否已经启动而且仍然在启动：
+
+```java
+//判断线程是否启动 
+class MyThread implements Runnable {			// 实现Runnable接口
+	public void run() {					// 覆写run()方法
+		for (int i = 0; i < 3; i++) {			// 循环输出3次
+			System.out.println(Thread.currentThread().getName()
+				+ "运行 --> " + i);		// 取得当前线程名称
+		}
+	}
+};
+public class ThreadAliveDemo {
+	public static void main(String args[]) {
+		MyThread mt = new MyThread();			// 实例化对象
+		Thread t = new Thread(mt, "线程");			// 实例化Thread对象
+		System.out.println("线程开始执行之前 --> " + t.isAlive());// 判断是否启动
+		t.start();					// 启动线程
+		System.out.println("线程开始执行之后 --> " + t.isAlive());// 判断是否启动
+		for (int i = 0; i < 3; i++) {			// 循环输出3次
+			System.out.println(" main 运行 --> " + i);	// 输出
+		}
+		System.out.println("代码执行之后 --> " + t.isAlive());// 后面的输出结果不确定
+	}
+};
+```
 
 ##### 线程的强制运行 
 
-在线程操作中，可以使用join()方法让一个线程强制运行，线程强制运行期间，其他线程无法运行，必须等待此线程完成之后才可以继续执行。
+在线程操作中，可以使用join()方法让一个线程强制运行，线程强制运行期间，其他线程无法运行，必须等待此线程完成之后才可以继续执行：
+
+```java
+//线程的强制运行 
+class MyThread implements Runnable {			// 实现Runnable接口
+	public void run() {				// 覆写run()方法
+		for (int i = 0; i < 50; i++) {			// 循环50次
+			System.out.
+				println(Thread.currentThread().getName() 
+					+ "运行 --> " + i);	// 输出线程名称
+		}
+	}
+};
+public class ThreadJoinDemo {
+	public static void main(String args[]) {
+		MyThread mt = new MyThread();			// 实例化对象
+		Thread t = new Thread(mt, "线程");			// 实例化Thread对象
+		t.start();					// 线程启动
+		for (int i = 0; i < 50; i++) {			// 循环50次
+			if (i > 10) {			// 判断变量内容
+				try {
+					t.join(); 		// 线程t进行强制运行
+				} catch (Exception e) {}	// 需要进行异常处理
+			}
+			System.out.println("Main 线程运行 --> " + i);
+		}
+	}
+};
+```
 
 ##### 线程的休眠 
 
-在程序中允许一个线程进行暂时的休眠，直接使用Thread.sleep()方法即可。
+在程序中允许一个线程进行暂时的休眠，直接使用Thread.sleep()方法即可：
+
+```java
+//线程的休眠 
+class MyThread implements Runnable {			// 实现Runnable接口
+	public void run() {					// 覆写run()方法
+		for (int i = 0; i < 5; i++) {			// 循环5次
+			try {
+				Thread.sleep(500);		// 线程休眠
+			} catch (Exception e) {}			// 需要异常处理
+			System.out.println(Thread.currentThread().getName() 
+				+ "运行， i = " + i);		// 输出线程名称
+		}
+	}
+};
+public class ThreadSleepDemo {
+	public static void main(String args[]) {
+		MyThread mt = new MyThread();			// 实例化对象
+		new Thread(mt, "线程").start();			// 启动线程
+	}
+};
+```
 
 ##### 中断线程 
 
-当一个线程运行的时候，另外一个线程可以直接通过interrupt()方法，中断其运行状态。
+当一个线程运行的时候，另外一个线程可以直接通过interrupt()方法，中断其运行状态：
+
+```java
+//线程的中断 
+class MyThread implements Runnable {			// 实现Runnable接口
+	public void run() {				// 覆写run()方法
+		System.out.println("1、进入run方法");
+		try {
+			Thread.sleep(10000);		// 休眠10秒
+			System.out.println("2、已经完成休眠");
+		} catch (Exception e) {
+			System.out.println("3、休眠被终止");
+			return;				// 让程序返回被调用处
+		}
+		System.out.println("4、run方法正常结束");
+	}
+};
+public class ThreadInterruptDemo {
+	public static void main(String args[]) {
+		MyThread mt = new MyThread();			// 实例化子类对象
+		Thread t = new Thread(mt, "线程");		// 实例化线程对象
+		t.start();
+		try {
+			Thread.sleep(2000);			// 稍微停2秒再继续中断
+		} catch (Exception e) {
+		}
+		t.interrupt();				// 中断线程执行
+	}
+};
+```
 
 ##### 后台线程 
 
-在Java程序中，只要前台有一个线程在运行，则整个java进程都不会消失，所以此时可以设置一个后台线程，这样即使Java进程结束了，此后台线程依然会继续执行。要想实现这样的操作，直接使用setDaemon()方法即可。
+在Java程序中，只要前台有一个线程在运行，则整个java进程都不会消失，所以此时可以设置一个后台线程，这样即使Java进程结束了，此后台线程依然会继续执行。要想实现这样的操作，直接使用setDaemon()方法即可：
+
+```java
+//后台线程的设置 
+class MyThread implements Runnable {			// 实现Runnable接口
+	public void run() {					// 覆写run()方法
+		while (true) {					// 无限制循环
+			System.out.println(Thread.currentThread()
+					.getName() + "在运行。");	// 输出线程名称
+		}
+	}
+};
+public class ThreadDaemonDemo {
+	public static void main(String args[]) {
+		MyThread mt = new MyThread();			// 实例化线程对象
+		Thread t = new Thread(mt, "线程");			// 实例化Thread类对象
+		t.setDaemon(true) ;				// 此线程在后台运行
+		t.start();					// 启动线程
+	}
+};
+```
 
 ##### 线程的优先级 
 
@@ -3328,9 +4282,38 @@ public final void setPriority(int newPriority)
 
 * 在Java的线程中使用setPriority()方法可以设置一个线程的优先级，在Java的线程中一共有以下三种优先级：
 
-  ![](.\Pictures\Java4.png)
+  ![](./Pictures/Java4.png)
 
-- 主方法的优先级是NORM_PRIORITY
+* 实例：
+  ```java
+  //测试线程优先级 
+  class MyThread implements Runnable {			// 实现Runnable接口
+	public void run() {				// 覆写run()方法
+		for (int i = 0; i < 5; i++) {			// 循环5次
+			try {
+				Thread.sleep(500);		// 线程休眠
+			} catch (Exception e) {}		// 需要异常处理
+			System.out.println(Thread.currentThread().getName() 
+				+ "运行， i = " + i);	// 输出线程名称
+		}
+	}
+  };
+  public class ThreadPriorityDemo {
+	  public static void main(String[] args) {
+		  Thread t1 = new Thread(new MyThread(),"线程A");	// 实例化线程对象
+		  Thread t2 = new Thread(new MyThread(),"线程B");	// 实例化线程对象
+		  Thread t3 = new Thread(new MyThread(),"线程C");	// 实例化线程对象
+		  t1.setPriority(Thread.MIN_PRIORITY) ;		// 设置线程优先级为最低
+		  t2.setPriority(Thread.MAX_PRIORITY) ;		// 设置线程优先级为最高
+		  t3.setPriority(Thread.NORM_PRIORITY) ;		// 设置线程优先级为中等
+		  t1.start() ;				// 启动线程
+		  t2.start() ;				// 启动线程
+		  t3.start() ;				// 启动线程
+	  }
+  }
+  ```
+
+* 主方法的优先级是NORM_PRIORITY
 
   ```java
   public class MainPriorityDemo {
@@ -3346,7 +4329,33 @@ public final void setPriority(int newPriority)
 
 ##### 线程的礼让 
 
-在线程操作中，也可以使用yield()方法将一个线程的操作暂时让给其他线程执行。
+在线程操作中，也可以使用yield()方法将一个线程的操作暂时让给其他线程执行：
+
+```java
+//线程的礼让 
+class MyThread implements Runnable {			// 实现Runnable接口
+	public void run() {					// 覆写run()方法
+		for (int i = 0; i < 5; i++)  {			// 不断输出
+			System.out.
+				println(Thread.currentThread().getName() 
+					+ "运行 --> " + i);	// 输出线程名称
+			if (i == 3) {
+				System.out.print("线程礼让：");
+				Thread.currentThread().yield() ;	// 线程礼让
+			}
+		}
+	}
+};
+public class ThreadYieldDemo {
+	public static void main(String args[]) {
+		MyThread my = new MyThread() ;			// 实例化MyThread对象
+		Thread t1 = new Thread(my, "线程A") ;		// 定义线程对象
+		Thread t2 = new Thread(my, "线程B");		// 定义线程对象
+		t1.start() ;					// 启动多线程
+		t2.start() ;					// 启动多线程
+	}
+};
+```
 
 #### 同步
 
@@ -3382,13 +4391,40 @@ public final void setPriority(int newPriority)
 
 #### 线程生命周期
 
-三个新方法：
+* 三个新方法：
 
-* suspend()方法：暂时挂起线程
-* resume()方法：恢复挂起的线程
-* stop()方法：停止线程  
+  * suspend()方法：暂时挂起线程
+  * resume()方法：恢复挂起的线程
+  * stop()方法：停止线程  
 
-但是对于线程中suspend()、resume()、stop()三个方法并不推荐使用，因为这三个方法在操作的时候会产生死锁的问题。
+  但是对于线程中suspend()、resume()、stop()三个方法并不推荐使用，因为这三个方法在操作的时候会产生死锁的问题。
+* 停止线程运行：在多线程的开发中可以通过设置标志位的方式停止一个线程的运行。 
+  ```java
+  //停止线程运行 
+  class MyThread implements Runnable {
+	private boolean flag = true; 			// 定义标志位属性
+	public void run() {				// 覆写run()方法
+		int i = 0;
+		while (this.flag) {				// 循环输出
+		 System.out.println(Thread.currentThread().getName() + “运行，i = ” + (i++));					// 输出当前线程名称
+		}
+	}
+	public void stop() { 				// 编写停止方法
+		this.flag = false;				// 修改标志位
+	}
+  }
+  public class StopDemo {
+	  public static void main(String[] args) {
+		  MyThread my = new MyThread();			// 实例化Runnable接口对象
+		  Thread t = new Thread(my, "线程");		// 建立线程对象
+		  t.start() ;
+          try{Thread.sleep(10);
+            }
+          catch(Exception e){}				// 启动线程
+		  my.stop() ;				// 线程停止，修改标志位
+	  }
+  }
+  ```
 
 ### 网络编程
 
@@ -3462,34 +4498,49 @@ JDBC本身提供的是一套数据库操作标准，而这些标准又需要各�
 ```java
 //用于管理JDBC 驱动程序
 java.sql.DriverManager
+
 //用于建立与特定数据库的连接，一个连接就是一个会话，建立连接后便可以执行SQL 语句和获得检索结果
 java.sql.Connection
+
 //一个Statement对象用于执行静态SQL语句，并获得语句执行后产生的结果
 java.sql.Statement
+
 //创建一个可以编译的SQL语句对象，该对象可以被多次运行，以提高执行的效率，该接口是Statement的子接口
 java.sql.PreparedStatement
+
 //用于创建表示SQL语句检索结果的结果集，用户通过结果集完成对数据库的访问
 java.sql.ResultSet
+
 //该类是标准java.util.Date的一个子集，用于表示与SQL DATE相同的日期类型，该日期不包括时间
 java.sql.Date
+
 //标准java.util.Date类的扩展，用于表示SQL时间戳，并增加了一个能表示纳秒的时间域
 java.sql.Timestamp
+
 //用于执行SQL存储过程
 java.sql.CallableStatement
+
 //与java.sql.ResultSetMetaData一同用于访问数据库的元信息
 java.sql.DatabaseMetaData
+
 //定义一个数据库驱动程序的接口
 java.sql.Driver
+
 //在JDBC遇到数据截断的异常时，报告一个警告（读数据时）或产生一个异常（写数据时）
 java.sql.DataTruncation
+
 //高级程序设计人员通过DriverPropertyInfo与Driver进行交流，可使用getDriverPropertyInfo获取或提供驱动程序的信息
 java.sql.DriverPropertyInfo
+
 //该类是标准java.util.Date 的一个子集，用于表示时、分、秒
 java.sql.Time
+
 //对数据库访问时产生的错误的描述信息
 java.sql.SQLException
+
 //对数据库访问时产生的警告的描述信息
 java.sql.SQLWarning
+
 //定义了表示SQL类型的常量
 java.sql.Types
 ```

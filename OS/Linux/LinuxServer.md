@@ -1,12 +1,5 @@
-# Linux notes
+# Linux Server
 [TOC]
-
-## Linux Desktop
-
-### OS
-
-* Gentoo
-* Deepin
 
 ## Linux Server
 

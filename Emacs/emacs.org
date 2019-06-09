@@ -15,12 +15,13 @@
     - M-x describe-function或<C-h f>查看命令的文档
     - M-x describe-key或<C-h k>查看快捷键的文档
 *** 在Shell中不加载任何插件打开Emacs:emacs -nw -Q
+
 ** Start learning
 *** Basic commands
 **** The following commands are useful for viewing screenfuls:
      - C-v Move forward one screenful
      - M-v Move backward one screenful
-     - C-l Clear screen and redisplay all the text, mspacemacs怎么设置根据不同文件自动显示行号oving the text around the
+     - C-l Clear screen and redisplay all the text, moving the text around the
        cursor to the center of the screen.(That's CONTROL-L, not CONTROL-1.)
        * Find the cursor, and note what text is near it. Then type C-l.
          Find the cursor again and notice that the same text is still near the
@@ -132,7 +133,7 @@
      - The line immediately above the echo area is called the "mode line"
      - To view documentation on your current major mode, type C-h m
      - One minor mode which is very useful, especially for editing human-language
-       text, is Auto Fill mode. When this mode is on, Emacs breaks the line in
+       text, is ~Auto Fill mode~. When this mode is on, Emacs breaks the line in
        between words automatically whenener you insert text and make a line that
        is too wide. You can turn Auto Fill mode on by doing M-x auto-fill-mode
        <Return>. When the mode is on, you can turn it off again by doing M-x
@@ -147,9 +148,14 @@
      - C-s Forward search; To go to the next occurrence just type it again.
      - C-r Reverse search; To go to the next occurrence just type it again.
 **** Multiple windows 
-     - C-x 2 Splits the screen into two windows
-     - C-M-v Scroll other window
-     - C-x o Move the cursor to the other window
+     
+     C-x 0 关闭当前窗口
+     C-x 1 将当前窗口最大化
+     C-x 2 Splits the screen into two windows（上下分割）
+     C-x 3 Splits the screen into two windows（左右分割）
+     C-M-v Scroll other window
+     C-x o Move the cursor to the other window
+
 **** Multiple frames
 **** Recursive editing levels
      - This is indicated by square brackets in the mode line, surrounding the
@@ -174,6 +180,7 @@
 ** Others
 
 *** C-h m
+
 *** Dired Mode
 **** C-x d
      - 进入 Dired Mode
@@ -205,7 +212,10 @@
     - which function mode is a global minor mode which displays the current
       function name in the mode line, updating it as you move around in a buffer.
 
-* Elisp
+*** 显示所有 buffer 
+
+    C-mouse 即按住 Ctrl 键，在　buffer 中点击鼠标左键。
+
 * Irc
 
 ** IRC 常用命令
