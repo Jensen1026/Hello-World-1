@@ -1,7 +1,5 @@
 # Java Notes
 
-[TOC]
-
 ## Java 概述 
 
 ### Java 语言特性
@@ -4627,6 +4625,7 @@ java.sql.Types
   ```java
   //通过连接地址连接数据库
   public static Connection getConnection(String url) throws SQLException
+
   //通过连接地址连接数据库，同时输入用户名和密码
   public static Connection getConnection(String url,String user,String password) throws SQLException
   ```
@@ -4638,36 +4637,52 @@ Connection接口的常用方法：
 ```java
 //创建一个Statement对象
 Statement createStatement() throws SQLException
+
 //创建一个 Statement 对象，该对象将生成具有给定类型和并发性的 ResultSet 对象
 Statement createStatement(int resultSetType,int resultSetConcurrency) throws SQLException
+
 //创建一个PreparedStatement类型的对象
 PreparedStatement prepareStatement(String sql) throws SQLException
+j
 //创建一个 PreparedStatement 对象，该对象将生成具有给定类型和并发性的 ResultSet 对象
 PreparedStatement prepareStatement(String sql,int resultSetType,int resultSetConcurrency) throws SQLException
+
 //创建一个CallableStatement对象，此对象专门用于调用数据库的存储过程
 CallableStatement prepareCall(String sql) throws SQLException
+
 //建一个 CallableStatement 对象，该对象将生成具有给定类型和并发性的 ResultSet 对象
 CallableStatement prepareCall(String sql,int resultSetType,int resultSetConcurrency) throws SQLException
+
 //得到数据库的元数据
 DatabaseMetaData getMetaData() throws SQLException
+
 //设置数据库的自动提交，与事务有关
 void setAutoCommit(boolean autoCommit) throws SQLException
+
 //判断数据库是否可以自动提交，与事务有关
 boolean getAutoCommit() throws SQLException
+
 //设置数据库的恢复点，与事务有关
 Savepoint setSavepoint() throws SQLException
+
 //为数据库的恢复点指定一个名字，与事务有关
 Savepoint setSavepoint(String name) throws SQLException
+
 //数据库操作回滚，与事务有关
 void rollback() throws SQLException
+
 //数据库回滚到指定的保存点，与事务有关
 void rollback(Savepoint savepoint) throws SQLException
+
 //提交操作，与事务有关
 void commit() throws SQLException
+
 //判断连接是否已关闭
 boolean isClosed() throws SQLException
+
 //关闭数据库
 void close() throws SQLException
+
 //得到数据库的元数据对象
 DatabaseMetaData getMetaData() throws SQLException
 ```
@@ -4681,14 +4696,19 @@ DatabaseMetaData getMetaData() throws SQLException
 ```java
 //执行数据库更新的SQL语句，例如：INSERT、UPDATE、DELETE等语句，返回更新的记录数
 int executeUpdate(String sql) throws SQLException
+
 //执行数据库查询操作，返回一个结果集对象
 ResultSet executeQuery(String sql) throws SQLException
+
 //增加一个待执行的SQL语句
 void addBatch(String sql) throws SQLException
+
 //批量执行SQL语句
 int[] executeBatch() throws SQLException
+
 //关闭Statement操作
 void close() throws SQLException
+
 //执行SQL语句
 boolean execute(String sql) throws SQLException
 ```
@@ -4702,20 +4722,28 @@ boolean execute(String sql) throws SQLException
 ```java
 //将指针移到下一行
 boolean next() throws SQLException
+
 //以整数形式按列的编号取得指定列的内容
 int getInt(int columnIndex) throws SQLException
+
 //以整数形式取得指定列的内容
 int getInt(String columnName) throws SQLException
+
 //以浮点数的形式按列的编号取得指定列的内容
 float getFloat(int columnIndex) throws SQLException
+
 //以浮点数的形式取得指定列的内容
 float getFloat(String columnName) throws SQLException
+
 //以字符串的形式按列的编号取得指定列的内容
 String getString(int columnIndex) throws SQLException
+
 //以字符串的形式取得指定列的内容
 String getString(String columnName) throws SQLException
+
 //以Date的形式按列的编号取得指定列的内容
 Date getDate(int columnIndex) throws SQLException
+
 //以Date的形式取得指定列的内容
 Date getDate(String columnName) throws SQLException
 ```
