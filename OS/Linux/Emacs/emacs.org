@@ -17,20 +17,27 @@
 *** 在Shell中不加载任何插件打开Emacs:emacs -nw -Q
 
 ** Start learning
+
 *** Basic commands
+
 **** The following commands are useful for viewing screenfuls:
-     - C-v Move forward one screenful
-     - M-v Move backward one screenful
-     - C-l Clear screen and redisplay all the text, moving the text around the
-       cursor to the center of the screen.(That's CONTROL-L, not CONTROL-1.)
-       * Find the cursor, and note what text is near it. Then type C-l.
-         Find the cursor again and notice that the same text is still near the
-         cursor, but now it is in the center of the screen. If you press C-l
-         again, this piece of text will move to the top of the screen. Press
-         C-l again, and it moves to the bottom.
-       * You can also use the Pageup and PageDn keys to move by screenfuls, if
-         your terminal has them, but you can edit more efficiently if you use
-         C-v and M-v.
+
+     C-v Move forward one screenful
+
+     M-v Move backward one screenful
+     
+     C-l Clear screen and redisplay all the text, moving the text around the
+     cursor to the center of the screen.(That's CONTROL-L, not CONTROL-1.)
+
+     * Find the cursor, and note what text is near it. Then type C-l. Find the
+       cursor again and notice that the same text is still near the cursor, but
+       now it is in the center of the screen. If you press C-l again, this piece
+       of text will move to the top of the screen. Press C-l again, and it moves
+       to the bottom.
+     * You can also use the Pageup and PageDn keys to move by screenfuls, if
+       your terminal has them, but you can edit more efficiently if you use C-v
+       and M-v.
+       
 **** Basic cursor control
      - C-f Move forward a character
      - C-b Move backward a character

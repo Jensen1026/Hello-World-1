@@ -132,7 +132,7 @@
 * Hyperlinks
 ** Link format
    - [[link][description] ] or alternatively [[link] ]
-   - To edit the invisible 'link' part, use C-c C-l with the cursor on the link
+   - To edit the invisible 'link' part, use ~C-c C-l~ with the cursor on the link
 ** Internal links
 ** External links
    - External links are URL-like locators. They start with a short identifying
