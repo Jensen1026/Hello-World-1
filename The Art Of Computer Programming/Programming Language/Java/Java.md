@@ -4001,10 +4001,10 @@ public class Person implements Serializable { 	// 此类的对象可以被序列
 
   ```java
   //继承Thread类实现多线程 
-  class MyThread extends Thread {			// 继承Thread类
+  class MyThread extends Thread {				// 继承Thread类
   	private String name;				// 在类中定义一个属性
   	public MyThread(String name) {			// 通过构造方法设置属性内容
-  		this.name = name;				// 为name属性赋值
+  		this.name = name;			// 为name属性赋值
   	}
   	public void run() {				// 覆写Thread类中的run()方法
   		for (int i = 0; i < 10; i++) {		// 循环10次输出
@@ -4548,7 +4548,7 @@ public class ThreadYieldDemo {
 
 #### Socket通信
 
-在Java，基于TCP协议实现网络通信的类有两个：在客户端的Socket类和在服务器端的ServerSocket类：
+在 Java，基于 TCP 协议实现网络通信的类有两个：在客户端的 Socket 类和在服务器端的ServerSocket 类：
 
 * 在服务器端通过指定一个用来等待的连接的端口号创建一个ServerSocket实例。
 * 在客户端通过规定一个主机和端口号创建一个socket实例，连到服务器上。
