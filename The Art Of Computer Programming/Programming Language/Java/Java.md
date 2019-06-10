@@ -2528,7 +2528,7 @@ public class IteratorDemo01 {
 		all.add("hello"); 			// 增加元素
 		all.add("_"); 				// 增加元素
 		all.add("world"); 			// 增加元素
-		Iterator<String> iter = all.iterator();	// 直接实例化Iterator接口S
+		Iterator<String> iter = all.iterator();	// 直接实例化Iterator接口
 		while (iter.hasNext()) {			// 依次判断
 			System.out.print(iter.next() + "、");// 输出内容
 		}
@@ -2545,8 +2545,8 @@ public class IteratorDemo02 {
 		all.add("hello"); 			// 增加元素
 		all.add("_"); 				// 增加元素
 		all.add("world"); 			// 增加元素
-		Iterator<String> iter = all.iterator();	// 直接实例化Iterator接口S
-		while (iter.hasNext()) {			/ 依次输出
+		Iterator<String> iter = all.iterator();	// 直接实例化Iterator接口
+		while (iter.hasNext()) {			// 依次输出
 			String str = iter.next();		// 取出内容
 			if ("_".equals(str)) {		// 判断内容是否是“_”
 				iter.remove(); 		// 删除当前元素
@@ -2576,9 +2576,9 @@ public class IteratorDemo02 {
 	  public static void main(String[] args) {
 		  List<String> all = new ArrayList<String>(); 	// 实例化List接口
 		  all.add("hello"); 				// 增加元素
-		  all.add("_"); 					// 增加元素
+		  all.add("_"); 				// 增加元素
 		  all.add("world"); 				// 增加元素
-		  for (String str : all) {				// 输出foreach输出
+		  for (String str : all) {			// 输出foreach输出
 			  System.out.print(str + "、");		// 输出内容
 		  }
 	  }
@@ -2587,8 +2587,7 @@ public class IteratorDemo02 {
 
 #### Map接口
 
-* 之前所讲解的Collection、Set、List接口都属于单值的操作，即：每次只能操作一个对象，而Map与它们不同的是，每次操作的是一对对象，即二元偶对象，Map中的每个元素都使用key à
-  value的形式存储在集合之中，此接口定义如下：
+* 之前所讲解的Collection、Set、List接口都属于单值的操作，即：每次只能操作一个对象，而Map与它们不同的是，每次操作的是一对对象，即二元偶对象，Map中的每个元素都使用 key,value 的形式存储在集合之中，此接口定义如下：
 
   > public interface Map<K,V>
 
@@ -2835,8 +2834,8 @@ import java.io.File;
 public class FileDemo05 {
 	public static void main(String args[]) {
 		File f = new File("d:"+File.separator+"test.txt") ;	// 必须给出路径
-		if(f.exists()){											// 判断文件是否存在
-			f.delete() ;										// 如果存在，则删除文件
+		if(f.exists()){						// 判断文件是否存在
+			f.delete() ;					// 如果存在，则删除文件
 		}
 	}
 }
@@ -3395,7 +3394,7 @@ public static final InputStream in
 
 ###### System.out 
 
-System.out是PrintStream的对象，在PrintStream中定义了一系列的print()和println()方法，所以之前使用的“System.out.print()”或“System.out.println()”语句调用的实际上就是PrintStream类的方法。
+System.out 是 PrintStream 的对象，在 PrintStream 中定义了一系列的 print() 和println() 方法，所以之前使用的 “System.out.print()” 或 “System.out.println()”语句调用的实际上就是 PrintStream 类的方法。
 ```java
 //使用OutputStream向屏幕上输出 
 import java.io.IOException;
