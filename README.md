@@ -7,7 +7,8 @@
 * [FaceBook F8](<https://www.f8.com/>)
 * [Google I/O](<https://events.google.com/io/>)
 
-## 一些大牛
+## 一些国内高手
 
 * [左耳朵耗子](<https://coolshell.cn/>)
 
+* [王勇](https://manateelazycat.github.io/)
