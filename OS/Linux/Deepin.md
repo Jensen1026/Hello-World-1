@@ -14,8 +14,20 @@ echo xset -b >> ~/.zshrc
 * Emacs
 * Vim
 * Vscode
+## IRC
+
+### 客户端
+
+* Irssi
+
+### 频道
+
+* \#emacs
+* \##ustc_lug
+* \#linuxdeepin  
 
 ## Deepin 开发指南
+
 [博客](https://deepin.lolimay.cn/)
 
 [Github](https://github.com/loliMay/deepin-develop-guide)

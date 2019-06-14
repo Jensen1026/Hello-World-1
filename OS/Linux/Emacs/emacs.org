@@ -225,23 +225,92 @@
 
 * Irc
 
+** Emacs 中的 IRC
+
+*** ERC
+    
+    [[https://www.emacswiki.org/emacs/ERC][Emacs Wiki]]
+
+    [[https://www.gnu.org/software/emacs/manual/html_mono/erc.html][Emacs Manual]]
+
 ** IRC 常用命令
+
+*** /help	
+
+    显示所有 IRC 命令
+
+*** /connect  server
+
+    链接服务器，例如：/connect irc.freenode.net
+
+*** /join #channel
+
+    加入 channel，例如：/join #emacs. 
+    如果 channel 不存在服务器可能会创建此 channel
+
+*** /msg NickServ REGISTER password email
+
+    注册
+
+*** /nick name
+
+    更改名字
+
+*** /leave #channel
+
+    离开频道，例如：/leave #emacs
+
+*** /quit reason
+
+    退出服务器，并留下原因，原因可省略
+
+*** /names #channel
+
+    查看当前 channel 所有用户
+
+*** /whois name
+
+    查看 name 用户的资料
+
+*** /who ip	
+    
+    常看某 ip 登录的所有用户
+
+*** /Who channel	
+
+    显示 channel 的人
+
+*** /Who *	
+
+    显示参加当前 channel 的人
+
+*** /part #channel reason	
+
+    离开 channel，并留下原因
+
+*** /invite nickname #channel
+
+    邀请某人到指定 channel
+
+*** /kick #channel nickname reason	
+
+    剔出某人，附上原因，需要权限
+
+*** /topic #channel' topic	
+
+    如果你是房间主持人，可以改变房间的主题
 
 *** /admin
 
     用来查询当前IRC服务器上Admin (即Administrator，IRC里最高级别的管理员) 的相关信息 
 
-*** /alias 
-
-    /alias [Alias文件名] <命令缩写> <具体命令> 
+*** /alias [Alias文件名] <命令缩写> <具体命令> 
 
     用来为某一条命令提供一个简单的缩写方式，这将使你聊天时更为方便，尤其是与对方
     纸上谈兵时。你也可以为该命令缩写指定一个保存的文件名。 使用/ALIAS命令只能为
     一条单行命令提供缩写。
 
-*** /away
-
-    /away [暂时离开的原因] 
+*** /away reason
 
     用来留下一条信息以说明你暂时要离开，你可以指定该信息。以后当某人再向你发送密
     聊话语或者对你做一个 “/WHOIS” 命令时，他/她就会看到你留下的信息并且得知你
@@ -249,9 +318,7 @@
     
     如果敲不带任何参数的/AWAY命令则可以解除离开状态。 
 
-*** /ban
-
-    /ban [-ruN] [#闲聊室] <别名|地址> [类型] 
+*** /ban [-ruN] [#channel] <别名|地址> [类型]
 
     禁止某人进入某个闲聊室（根据他的地址）。 
 
