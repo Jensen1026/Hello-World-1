@@ -1,5 +1,5 @@
 /按字母表排序/(org-sort)
-* apropos 
+* apropos
   - search the manual page names and descriptions
 * badblocks
   - search a device for bad blocks
@@ -12,7 +12,7 @@
 * bc
   - An arbitrary precision calculator language
 ** usage
-*** quit 
+*** quit
     - exit
 * blkid
   - locate/print block device attributes
@@ -30,10 +30,14 @@
 ** usage
 *** cal -y
 * cat
-  - concatenate files and print on the standard output
+
+  concatenate files and print on the standard output.
+
 ** usage
+
 *** cat -A
 *** cat -n
+
 * cd
   - change the working directory
 ** usage
@@ -244,7 +248,7 @@
   - print distribution-specific information
 ** usage
 *** lsb_release -a
-* mandb 
+* mandb
   - create or update the manual page index caches
 * mkdir
   - make directories
@@ -435,7 +439,7 @@
       * alias: 表示该命令为命令别名所设置的名称;
       * builtin: 表示该命令为 bash 内置的命令功能;
 *** -p
-    - 如果后面接的 name 为外部命令时, 才会显示完整文件名 
+    - 如果后面接的 name 为外部命令时, 才会显示完整文件名
 *** -a
     - 会由 PATH 变量定义的路径中, 将所有含 -a 后字符串的命令都列出来
 * umask
@@ -478,7 +482,7 @@
 * which
   - shows the full path of (shell) commands
 ** usage
-*** -a 
+*** -a
     - Print all matching executables in PATH, not just the first
 * xfs_admin
   - change parameters of an XFS filesystem
@@ -537,3 +541,78 @@
 * crontab
 * curl
 * trap
+* man
+
+  在线参考手册的接口
+
+** 参考
+
+   man man
+
+** usage
+
+*** man -k printf
+
+    Search the short descriptions and manual page names for the keyword printf
+    as regular expression. Print out any matches. Equivalent to apropos printf.
+
+*** man -f smail
+
+    Lookup the manual pages referenced by smail and print out the short
+    descriptions of any found. Equivalent to whatis smail.
+
+* wget
+
+** 参考
+
+   [[https://www.gnu.org/software/wget/][GNU]]
+
+** usage
+
+*** wget -r -np -nd http://example.com/packages/
+
+    这条命令可以下载 http://example.com 网站上 packages 目录中的所有文件。其
+    中，-np 的作用是不遍历父目录，-nd 表示不在本机重新创建目录结构。
+
+*** wget -r -np -nd --accept=iso http://example.com/centos-5/i386/
+
+    与上一条命令相似，但多加了一个 --accept=iso 选项，这指示 wget 仅下载 i386 目
+    录中所有扩展名为 iso 的文件。你也可以指定多个扩展名，只需用逗号分隔即可。
+
+*** wget -i filename.txt
+
+    此命令常用于批量下载的情形，把所有需要下载文件的地址放到 filename.txt 中，然
+    后 wget 就会自动为你下载所有文件了。
+
+*** wget -c http://example.com/really-big-file.iso
+
+    这里所指定的 -c 选项的作用为断点续传。
+
+*** wget -m -k (-H) http://www.example.com/
+
+    该命令可用来镜像一个网站，wget 将对链接进行转换。如果网站中的图像是放在另外
+    的站点，那么可以使用 -H 选项。
+
+* netstat
+
+** 参考
+
+** usage
+
+*** netstat -tunl
+
+    列出正在监听的网络服务
+
+*** netstat -tun
+
+    列出已连接的网络连接状态
+
+*** netstat -tulnp
+
+    显示出目前已经启动的网络服务
+
+*** netstat -atunp
+
+    查看本机上所有的网络连接状态
+
+* nmap

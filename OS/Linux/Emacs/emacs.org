@@ -1,6 +1,9 @@
 * Emacs
+
 ** Before learning
+
 *** Important note
+
     - C-<chr> means hold the CONTROL key while typing the character <chr>
     - M-<chr> means hold the META or EDIT or ALT key down while typing <chr>.
       If there is no META, EDIT or ALT key, instead press and release the ESC key
@@ -10,7 +13,7 @@
     - TO quit a partially entered command, type C-g
 *** Documents in Emacs
     - M-x help-with-tutorial或<C-h t>查看Emacs tutorial
-      * To stop the tutorial, type C-x k, then <Return> at the prompt 
+      * To stop the tutorial, type C-x k, then <Return> at the prompt
     - M-x describe-variable或<C-h v>查看变量的文档
     - M-x describe-function或<C-h f>查看命令的文档
     - M-x describe-key或<C-h k>查看快捷键的文档
@@ -25,7 +28,7 @@
      C-v Move forward one screenful
 
      M-v Move backward one screenful
-     
+
      C-l Clear screen and redisplay all the text, moving the text around the
      cursor to the center of the screen.(That's CONTROL-L, not CONTROL-1.)
 
@@ -37,7 +40,7 @@
      * You can also use the Pageup and PageDn keys to move by screenfuls, if
        your terminal has them, but you can edit more efficiently if you use C-v
        and M-v.
-       
+
 **** Basic cursor control
      - C-f Move forward a character
      - C-b Move backward a character
@@ -86,7 +89,7 @@
        * Note that a single C-k kills the contents of the line, and a second C-k
          kills the line itself, and makes all the other lines move up. C-k treats
          a numeric argument specially: it kills that many lines AND their contents.
-         This is not mere repetition.  
+         This is not mere repetition.
      - M-k Kill to the end of the current sentence
      - You can also kill a segment of text with one uniform method. Move to one end
        of that part, and type C-<SPC>. (<SPC> is the Space bar.) Next, move the
@@ -112,7 +115,7 @@
 **** Files
      - C-x C-f Find a file
      - C-x C-s Save the file
-       * Create new file: Create a file named "foo" by typing C-x C-f foo <Return> 
+       * Create new file: Create a file named "foo" by typing C-x C-f foo <Return>
 **** Buffers
      - C-x C-b List buffers
        * The buffer list you make with C-x C-b shows you both the buffer name and
@@ -154,8 +157,8 @@
 **** Searching
      - C-s Forward search; To go to the next occurrence just type it again.
      - C-r Reverse search; To go to the next occurrence just type it again.
-**** Multiple windows 
-     
+**** Multiple windows
+
      C-x 0 关闭当前窗口
      C-x 1 将当前窗口最大化
      C-x 2 Splits the screen into two windows（上下分割）
@@ -208,7 +211,7 @@
 **** x
      - 执行所有的标记
 *** Imenu
-    - The imenu facility offers a way to find the major definitions in a 
+    - The imenu facility offers a way to find the major definitions in a
       file by name.
     - If you type M-x imenu, it reads the name of a definition using the
       minibuffer, then moves point to that definition.
@@ -219,112 +222,6 @@
     - which function mode is a global minor mode which displays the current
       function name in the mode line, updating it as you move around in a buffer.
 
-*** 显示所有 buffer 
+*** 显示所有 buffer
 
     C-mouse 即按住 Ctrl 键，在　buffer 中点击鼠标左键。
-
-* Irc
-
-** Emacs 中的 IRC
-
-*** ERC
-    
-    [[https://www.emacswiki.org/emacs/ERC][Emacs Wiki]]
-
-    [[https://www.gnu.org/software/emacs/manual/html_mono/erc.html][Emacs Manual]]
-
-** IRC 常用命令
-
-*** /help	
-
-    显示所有 IRC 命令
-
-*** /connect  server
-
-    链接服务器，例如：/connect irc.freenode.net
-
-*** /join #channel
-
-    加入 channel，例如：/join #emacs. 
-    如果 channel 不存在服务器可能会创建此 channel
-
-*** /msg NickServ REGISTER password email
-
-    注册
-
-*** /nick name
-
-    更改名字
-
-*** /leave #channel
-
-    离开频道，例如：/leave #emacs
-
-*** /quit reason
-
-    退出服务器，并留下原因，原因可省略
-
-*** /names #channel
-
-    查看当前 channel 所有用户
-
-*** /whois name
-
-    查看 name 用户的资料
-
-*** /who ip	
-    
-    常看某 ip 登录的所有用户
-
-*** /Who channel	
-
-    显示 channel 的人
-
-*** /Who *	
-
-    显示参加当前 channel 的人
-
-*** /part #channel reason	
-
-    离开 channel，并留下原因
-
-*** /invite nickname #channel
-
-    邀请某人到指定 channel
-
-*** /kick #channel nickname reason	
-
-    剔出某人，附上原因，需要权限
-
-*** /topic #channel' topic	
-
-    如果你是房间主持人，可以改变房间的主题
-
-*** /admin
-
-    用来查询当前IRC服务器上Admin (即Administrator，IRC里最高级别的管理员) 的相关信息 
-
-*** /alias [Alias文件名] <命令缩写> <具体命令> 
-
-    用来为某一条命令提供一个简单的缩写方式，这将使你聊天时更为方便，尤其是与对方
-    纸上谈兵时。你也可以为该命令缩写指定一个保存的文件名。 使用/ALIAS命令只能为
-    一条单行命令提供缩写。
-
-*** /away reason
-
-    用来留下一条信息以说明你暂时要离开，你可以指定该信息。以后当某人再向你发送密
-    聊话语或者对你做一个 “/WHOIS” 命令时，他/她就会看到你留下的信息并且得知你
-    已经暂时离开了。 
-    
-    如果敲不带任何参数的/AWAY命令则可以解除离开状态。 
-
-*** /ban [-ruN] [#channel] <别名|地址> [类型]
-
-    禁止某人进入某个闲聊室（根据他的地址）。 
-
-    加参数-r是不再禁止某人；参数-uN是指只禁止某人N秒钟。 
-
-*** /close
-
-* Email
-* Spacemacs

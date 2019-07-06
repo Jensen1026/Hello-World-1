@@ -1,3 +1,11 @@
 * 参考链接
 
+[[https://stackoverflow.com/questions/1012573/getting-started-with-haskell][学习指南]]
+
 [[https://www.haskell.org/][Haskell官网]]
+
+[[http://learnyouahaskell.com/][Learn You a Haskell for Great Good]]
+
+[[http://book.realworldhaskell.org/][Real World Haskell]]
+
+[[https://simonmar.github.io/pages/pcph.html][Parallel and Concurrent Programming in Haskell]]

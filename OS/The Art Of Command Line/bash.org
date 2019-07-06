@@ -1,0 +1,548 @@
+* emacs-style keyboard shortcuts
+
+  The bash shell features a wide variety of keyboard shortcuts you can use.
+  These will work in bash on any operating system. Some of them may not work if
+  you’re accessing bash remotely through an SSH or telnet session, depending on
+  how you have your keys mapped.
+
+** Working With Processes
+
+   Use the following shortcuts to manage running processes.
+
+*** Ctrl+C 
+
+    Interrupt (kill) the current foreground process running in in the terminal.
+    This sends the SIGINT signal to the process, which is technically just a
+    request—most processes will honor it, but some may ignore it.
+
+*** Ctrl+Z
+
+    Suspend the current foreground process running in bash. This sends the
+    SIGTSTP signal to the process. To return the process to the foreground
+    later, use the ~fg process_name~ command.
+      
+*** Ctrl+D
+
+    Close the bash shell. This sends an EOF (End-of-file) marker to bash, and
+    bash exits when it receives this marker. This is similar to running the exit
+    command.
+
+** Controlling the Screen
+
+   The following shortcuts allow you to control what appears on the screen.
+
+*** Ctrl+L
+
+    Clear the screen. This is similar to running the “clear” command.
+
+*** Ctrl+S
+
+    Stop all output to the screen. This is particularly useful when running
+    commands with a lot of long, verbose output, but you don’t want to stop the
+    command itself with Ctrl+C.
+    
+*** Ctrl+Q
+
+    Resume output to the screen after stopping it with Ctrl+S.
+              
+** Moving the Cursor
+
+   Use the following shortcuts to quickly move the cursor around the current
+   line while typing a command.
+
+*** Ctrl+A or Home
+
+    Go to the beginning of the line.
+    
+*** Ctrl+E or End
+
+    Go to the end of the line.
+
+*** Alt+B
+
+    Go left (back) one word.
+
+*** Ctrl+B
+
+    Go left (back) one character.
+
+*** Alt+F
+
+    Go right (forward) one word.
+
+*** Ctrl+F
+
+    Go right (forward) one character.
+
+*** Ctrl+XX
+
+    Move between the beginning of the line and the current position of the
+    cursor. This allows you to press Ctrl+XX to return to the start of the line,
+    change something, and then press Ctrl+XX to go back to your original cursor
+    position. To use this shortcut, hold the Ctrl key and tap the X key twice.
+              
+*** Alt + b 
+
+    按单词后移（左向）
+
+*** shift+PgUp	 
+
+    将终端显示向上滚动
+
+*** shift+PgDn	 
+
+    将终端显示向下滚动
+
+** Deleting Text
+
+   Use the following shortcuts to quickly delete characters:
+
+*** Ctrl+D or Delete
+
+    Delete the character under the cursor.
+
+    输入结束（EOF），或退出终端
+
+*** Alt+D
+
+    Delete all characters after the cursor on the current line.
+
+*** Ctrl+H or Backspace
+
+    Delete the character before the cursor.
+
+*** Alt + Backspace 
+
+    与 Ctrl + w 类似，但分隔符有些差别
+
+** Fixing Typos
+
+   These shortcuts allow you to fix typos and undo your key presses.
+
+*** Alt+T
+
+    Swap the current word with the previous word.
+
+*** Ctrl+T: Swap the last two characters before the cursor with each other. You can use this to quickly fix typos when you type two characters in the wrong order.
+
+*** Ctrl+_: Undo your last key press. You can repeat this to undo multiple times.
+
+** Cutting and Pasting
+
+   Bash includes some basic cut-and-paste features.
+
+*** Ctrl+W
+
+    Cut the word before the cursor, adding it to the clipboard.
+    
+*** Ctrl+K
+
+    Cut the part of the line after the cursor, adding it to the clipboard.
+    
+*** Ctrl+U
+
+    Cut the part of the line before the cursor, adding it to the clipboard.
+
+*** Ctrl+Y
+
+    Paste the last thing you cut from the clipboard. The y here stands for
+    “yank”.
+
+** Capitalizing Characters
+
+   The bash shell can quickly convert characters to upper or lower case:
+
+*** Alt+U
+
+    Capitalize every character from the cursor to the end of the current word,
+    converting the characters to upper case.
+ 
+*** Alt+L
+
+    Uncapitalize every character from the cursor to the end of the current word,
+    converting the characters to lower case.
+  
+*** Alt+C
+
+    Capitalize the character under the cursor. Your cursor will move to the end
+    of the current word.
+      
+** Tab Completion
+
+   Tab completion is a very useful bash feature. While typing a file, directory,
+   or command name, press Tab and bash will automatically complete what you’re
+   typing, if possible. If not, bash will show you various possible matches and
+   you can continue typing and pressing Tab to finish typing.
+
+*** Tab
+
+    Automatically complete the file, directory, or command you’re typing.
+
+** Working With Your Command History
+
+   You can quickly scroll through your recent commands, which are stored in your
+   user account’s bash history file:
+
+*** Ctrl+P or Up Arrow
+
+    Go to the previous command in the command history. Press the shortcut
+    multiple times to walk back through the history.
+
+*** Ctrl+N or Down Arrow
+
+    Go to the next command in the command history. Press the shortcut multiple
+    times to walk forward through the history.
+    
+*** Alt+R
+    
+    Revert any changes to a command you’ve pulled from your history if you’ve
+    edited it.
+
+    Bash also has a special “recall” mode you can use to search for commands
+    you’ve previously run:
+
+*** Ctrl+R
+
+    Recall the last command matching the characters you provide. Press this
+    shortcut and start typing to search your bash history for a command.
+
+*** Ctrl+O
+
+    Run a command you found with Ctrl+R.
+
+*** Ctrl+G
+
+    Leave history searching mode without running a command.
+
+*** Alt + . 
+
+    使用上一条命令的最后一个参数
+
+** Bang (!) 命令
+
+*** !! 
+
+    执行上一条命令
+
+*** !blah 
+
+    执行最近的以 blah 开头的命令，如 !ls
+
+*** !blah:p 
+
+    仅打印输出，而不执行
+
+*** !$ 
+
+    上一条命令的最后一个参数，与 Alt + . 相同
+
+*** !$:p 
+
+    打印输出 !$ 的内容
+
+*** !* 
+
+    上一条命令的所有参数
+
+*** !*:p
+
+    打印输出 !* 的内容
+
+*** ^blah 
+    
+    删除上一条命令中的 blah
+
+*** ^blah^foo 
+
+    将上一条命令中的 blah 替换为 foo
+
+*** ^blah^foo^ 
+
+    将上一条命令中所有的 blah 都替换为 foo
+
+** Others
+
+*** Ctrl + m
+
+    就是Enter
+
+*** Ctrl + \
+
+    the terminal quit character
+
+** emacs vs. vi Keyboard Shortcuts
+
+   The above instructions assume you’re using the default keyboard shortcut
+   configuration in bash. By default, bash uses emacs-style keys. If you’re
+   more used to the vi text editor, you can switch to vi-style keyboard shortcuts.
+
+   The following command will put bash into vi mode:
+
+   ~set -o vi~
+
+   The following command will put bash back into the default emacs mode:
+
+   ~set -o emacs~
+
+   With a few of these in your toolbelt, you’ll be a Terminal master in no time.
+
+* vi-style keyboard shortcuts
+* how to use bash history
+
+** Keyboard Shortcuts
+
+   To scroll through your bash history, you can use a few of bash’s many useful
+   keyboard shortcuts. Press these shortcuts and commands you’ve previously used
+   will appear at the prompt.
+
+*** Up Arrow or Ctrl+P
+
+    Go to the previous command in your history. Press the key multiple times to
+    walk backwards through the commands you’ve used.
+
+*** Down Arrow or Ctrl+N
+
+    Go to the next command in your history. Press the key multiple times to walk
+    forwards through the commands you’ve used.
+    
+*** Alt+R
+
+    Revert any changes to a command you’ve pulled from your history if you’ve
+    edited it on the current line.
+      
+    Bash also has a special “recall” mode you can use to search for commands
+    you’ve previously run, rather than scrolling through them one by one.
+
+*** Ctrl+R
+
+    Recall the last command matching the characters you provide. Press this
+    shortcut and start typing to search your bash history for a command.
+        
+*** Ctrl+O
+
+    Run the command you found with Ctrl+R.
+
+*** Ctrl+G
+
+    Leave the history searching mode without running a command.
+
+** View Your Bash History
+
+   You can print your entire bash history to the screen by running a single
+   command:
+
+   ~history~
+
+   You’ll see a list of all the commands in your bash history, along with a
+   number to the left of each. The command with a “1” next to it is the oldest
+   command in your bash history, while the command with the highest number is
+   the most recent.
+
+   You can do anything you like with the output. For example, you could pipe it
+   to the ~grep~ command to search your command history.
+
+   ~history | grep your_search~
+
+   You could also pipe it to the ~tail~ command to view only a small number of
+   the recent commands you’ve run. For example, the following command would
+   show the last 5 entries in your history.
+
+   ~history | tail -5~
+
+** Run Commands From Your History
+
+   Bash can quickly “expand” previous commands, or expand them and modifying
+   them. This feature is known as “history expansion” and uses an exclamation
+   mark, known as a “bang”. Just type them at the prompt and press Enter to
+   run them like you’d run any other command.
+
+   To run a specific command from your history by its number, use the following
+   command:
+
+   ~!#~
+
+   For example, let’s say you wanted to run the 12th command from your bash
+   history. That’s the command with a “12” to the left of it when you run the
+   history command. You’d type the following command.
+
+   ~!12~
+
+   To re-run the last command you ran, type the following. This has the same
+   effect as pressing the Up arrow once to view the previous command and then
+   pressing Enter.
+
+   ~!!~
+
+   You can also refer to a command a certain number of lines back. For example,
+   !-2 would run the second to last command you ran. !! means the same thing as
+   !-1.
+
+   This expansion works anywhere on the line. You can add anything you like
+   before or after ~!!~ or any of the other expressions in this section. For
+   example, you can type the following command to rerun the last command you ran
+   through ~sudo~, giving it root privileges. This is particularly useful if you
+   forget to add ~sudo~ before running a command.
+
+   ~sudo !!~
+
+    Or, for example, you could rerun the previous command and pipe its output to
+    grep to search for some text.
+
+   ~!! | grep text~
+
+   To search for a command in your history and run it, type the following. This
+   will run the last command that matches the text you specify:
+
+   ~!text~
+
+   So, if you recently ran a command that began with ~ping~, you can run the
+   following command to search for it. This will search backwards through your
+   history, locate the most recent command that begins with “pi“, and
+   immediately run it:
+
+   ~!pi~
+
+   You can append a :p to any of the above expansions and bash will print the
+   command to the terminal without running it. This is useful if you want to
+   confirm you’re selecting the correct command before you run it.
+
+   ~!12:p~
+
+   ~!!:p~
+
+   ~!text:p~
+
+** Reuse Arguments From Your History
+
+   Bash also allows you to run a new command, but use arguments from previous
+   commands in your history. This can help you quickly reuse long or complicated
+   arguments without having to retype them.
+
+   ~command !$~
+
+   For example, let’s say you ran the command ~touch
+   /home/chris/some_long_file_name_you_dont_want_to_type_again. You now want to
+   run the command nano
+   /home/chris/some_long_file_name_you_dont_want_to_type_again. Rather than
+   typing the whole thing from scratch, you could run:
+
+   ~nano !$~
+
+   The !$ would make bash automatically fill in the last argument from your
+   previous command.
+
+   This only fills in the last argument. So, if you run ~ping google.com -c 4~
+   and then run ~ping !$~ , this would just expand to "ping 4".
+
+   To fix this situation, you can use the following trick to expand the first
+   argument on the line, rather than the last:
+
+   ~command !^~
+
+   So, if you ran ~ping google.com -c 4~ and then ran ~ping !^~ , bash would
+   expand this to "ping google.com".
+
+   To fill in all the arguments used in the previous command instead of just a
+   single argument, you’d use the following:
+
+   ~command !*~
+
+   So, if you ran ~ping !*~ instead, bash would automatically fill in all the
+   arguments you used in the previous command.
+
+   You can use the same trick you use to run commands from your history to get
+   arguments from them. Just use the following form.
+
+   ~command !abc:#~
+
+   For example, we ran the command ~sudo hostname ubuntu~ earlier. If we run the
+   following command, bash will search backwards through the history to find the
+   last command beginning with the letters we type and fill in the argument we
+   specify. So, if we run ~echo !su:2~ , bash will search back to find the last
+   command beginning with "su" and fill in its second argument, which is
+   "ubuntu".
+
+   Other tricks work as you might expect. For example, replacing the number with
+   an asterisk, known as the wildcard, causes bash to fill in all arguments from
+   the command:
+
+   ~command !abc:*~
+
+** Rerun the Previous Command and Modify It
+
+   Bash also allows you to rerun the previous command and specify something that
+   should be changed. This can be useful for correcting a typo in a command. For
+   example, the following command will rerun the previous command, replacing the
+   text "abc" in it with the text “xyz“.
+
+   ~^abc^xyz~
+
+   For example, if you accidentally ran ~ping gogle.com~!, you could then run
+   ~^gog^goog~ and bash would run the command ~ping google.com~ instead.
+
+** Where Your History Is Stored, and How to Clear It
+
+   The bash shell stores the history of commands you’ve run in your user
+   account’s history file at ~/.bash_history by default. For example, if your
+   username is bob, you’ll find this file at /home/bob/.bash_history.
+
+   Because your history is stored in a file, it persists between sessions. You
+   can run some commands, sign out, come back the next day, and those commands
+   will still be in your history file ready to view and use. Each user account
+   has its own history file with a separate command history.
+
+   To clear your bash history, you can run the following command. This erases
+   the contents of your user account’s .bash_history file:
+
+   ~history -c~
+
+   Bash only remembers a limited number of commands by default, preventing the
+   history file from growing too large. The number of history entries bash
+   remembers is controlled by the HISTSIZEvariable. The default is usually 500
+   or 1000 entries. You can run the following command to view the size of the
+   bash history on your system.
+
+   ~echo $HISTSIZE~
+
+   To set your history to zero, run the following command.
+
+   ~HISTSIZE=0~
+
+   For the current session, bash won’t store any history entries unless your
+   run a command like ~HISTSIZE=1000~ to set it back to a certain number of
+   entries.
+
+** How to Ignore Spaces and Duplicates
+
+   Bash allows you to ignore history entries that begin with a space if you set
+   the ~HISTCONTROL~ variable to ~ignorespace~.
+
+   ~HISTCONTROL=ignorespace~
+
+   Type a space before a command before running it in the bash shell and the
+   command will run normally, but won’t appear in your history if you have this
+   variable enabled. This allows you to keep your history a bit cleaner,
+   choosing to run commands without them appearing in your history.
+
+   Bash also allows you to ignore duplicate commands that can clutter your
+   history. To do so, set ~HISTCONTROL~ to ~ignoredups~.
+
+   ~HISTCONTROL=ignoredups~
+
+   To use both the ~ignorespace~ and ~ignoredups~ feature, set the ~HISTCONTROL~
+   variable to ~ignoreboth~.
+
+   ~HISTCONTROL=ignoreboth~
+
+   Note that bash variables you set will only persist for the current session.
+   You’ll need to add these to your user account’s .bashrc file to have these
+   values automatically set in every bash session you start, if you prefer that.
+
+   The bash shell is a complex tool with many more options than these. Consult
+   the [[https://www.gnu.org/software/bash/manual/html_node/Bash-History-Builtins.html][Bash History Builtins]] and [[https://www.gnu.org/software/bash/manual/html_node/History-Interaction.html][History Expansion]] sections in the official bash
+   manual more detailed information and other advanced tricks you can use.
+
+* reference
+
+** [[https://www.howtogeek.com/howto/ubuntu/keyboard-shortcuts-for-bash-command-shell-for-ubuntu-debian-suse-redhat-linux-etc/][The Best Keyboard Shortcuts for Bash (aka the Linux and macOS Terminal)]]
+** [[https://www.howtogeek.com/howto/44997/how-to-use-bash-history-to-improve-your-command-line-productivity/][How to Use Your Bash History in the Linux or macOS Terminal]]

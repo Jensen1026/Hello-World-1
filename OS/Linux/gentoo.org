@@ -1,0 +1,51 @@
+* Basic System
+
+** [[https://www.linuxboot.org/][LinuxBoot]]
+
+** stub kernel
+
+** Gentoo
+
+* Desktop Envirnoment
+
+** sway
+
+** dwm
+
+*** slock
+
+*** xss-lock
+
+*** dmenu
+
+*** xsetroot
+
+* Drivers
+
+** xf86-input-libinput
+
+* Applications
+
+** mpv Media Player
+
+* simple terminal
+
+** oh-my-zsh
+
+** tmux
+
+** ranger
+
+*** zathura
+
+*** feh
+
+** Vim
+
+** Emacs
+
+** tree
+
+* FONT
+
+** SauceCodePro Nerd Font Mono
